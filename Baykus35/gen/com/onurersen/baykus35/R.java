@@ -9,14 +9,6 @@ package com.onurersen.baykus35;
 
 public final class R {
     public static final class attr {
-        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int title=0x7f010000;
     }
     public static final class color {
         public static final int actionbar_background_end=0x7f040003;
@@ -51,29 +43,17 @@ containing a value of this type.
         public static final int image_actionbar_back_indicator=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090010;
-        public static final int actionbar=0x7f09000a;
-        public static final int actionbar_actions=0x7f090006;
-        public static final int actionbar_home=0x7f090001;
-        public static final int actionbar_home_bg=0x7f090003;
-        public static final int actionbar_home_btn=0x7f090004;
-        public static final int actionbar_home_is_back=0x7f090005;
-        public static final int actionbar_home_logo=0x7f090002;
-        public static final int actionbar_item=0x7f090009;
-        public static final int actionbar_progress=0x7f090007;
-        public static final int actionbar_title=0x7f090008;
-        public static final int descriptionView=0x7f09000f;
-        public static final int imageView=0x7f09000c;
-        public static final int listView=0x7f09000b;
-        public static final int numberView=0x7f09000d;
-        public static final int routeView=0x7f09000e;
-        public static final int screen=0x7f090000;
+        public static final int action_settings=0x7f090006;
+        public static final int actionbar=0x7f090000;
+        public static final int descriptionView=0x7f090005;
+        public static final int imageView=0x7f090002;
+        public static final int listView=0x7f090001;
+        public static final int numberView=0x7f090003;
+        public static final int routeView=0x7f090004;
     }
     public static final class layout {
-        public static final int actionbar=0x7f030000;
-        public static final int actionbar_item=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int row=0x7f030003;
+        public static final int activity_main=0x7f030000;
+        public static final int row=0x7f030001;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -117,33 +97,4 @@ containing a value of this type.
          */
         public static final int AppTheme=0x7f070001;
     }
-    public static final class styleable {
-        /** Attributes that can be used with a ActionBar.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ActionBar_title com.onurersen.baykus35:title}</code></td><td></td></tr>
-           </table>
-           @see #ActionBar_title
-         */
-        public static final int[] ActionBar = {
-            0x7f010000
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.onurersen.baykus35.R.attr#title}
-          attribute's value can be found in the {@link #ActionBar} array.
-
-
-          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.onurersen.baykus35:title
-        */
-        public static final int ActionBar_title = 0;
-    };
 }
