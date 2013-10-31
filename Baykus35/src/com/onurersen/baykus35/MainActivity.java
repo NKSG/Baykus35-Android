@@ -1,16 +1,11 @@
 package com.onurersen.baykus35;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.onurersen.baykus35.actionbar.ActionBar;
-import com.onurersen.baykus35.actionbar.ActionBar.Action;
-import com.onurersen.baykus35.actionbar.ActionBar.IntentAction;
 import com.onurersen.baykus35.list.ItemAdapter;
 import com.onurersen.baykus35.list.Model;
 
@@ -22,7 +17,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_main);
         configureRouteList();
     }

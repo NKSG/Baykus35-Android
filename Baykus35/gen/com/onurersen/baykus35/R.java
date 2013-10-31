@@ -11,9 +11,6 @@ public final class R {
     public static final class attr {
     }
     public static final class dimen {
-        public static final int actionbar_height=0x7f040002;
-        public static final int actionbar_item_height=0x7f040003;
-        public static final int actionbar_item_width=0x7f040004;
         /**  Default screen margins, per the Android Design guidelines. 
 
          Customize dimensions originally defined in res/values/dimens.xml (such as
@@ -24,9 +21,13 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_title_share_default=0x7f020001;
-        public static final int icon=0x7f020002;
+        public static final int gradient_bg=0x7f020000;
+        public static final int gradient_bg_hover=0x7f020001;
+        public static final int gradient_bg_pressed=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int ic_title_share_default=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int txt_view_bg=0x7f020006;
     }
     public static final class id {
         public static final int action_settings=0x7f080005;
@@ -45,7 +46,6 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
-        public static final int actionbar_activity_not_found=0x7f050003;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
     }
