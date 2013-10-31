@@ -10,66 +10,46 @@ package com.onurersen.baykus35;
 public final class R {
     public static final class attr {
     }
-    public static final class color {
-        public static final int actionbar_background_end=0x7f040003;
-        public static final int actionbar_background_item_pressed_end=0x7f040005;
-        public static final int actionbar_background_item_pressed_start=0x7f040004;
-        public static final int actionbar_background_start=0x7f040002;
-        public static final int actionbar_separator=0x7f040000;
-        public static final int actionbar_title=0x7f040001;
-    }
     public static final class dimen {
-        public static final int actionbar_height=0x7f050002;
-        public static final int actionbar_item_height=0x7f050003;
-        public static final int actionbar_item_width=0x7f050004;
+        public static final int actionbar_height=0x7f040002;
+        public static final int actionbar_item_height=0x7f040003;
+        public static final int actionbar_item_width=0x7f040004;
         /**  Default screen margins, per the Android Design guidelines. 
 
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f040000;
+        public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int actionbar_back_indicator=0x7f020000;
-        public static final int actionbar_background=0x7f020001;
-        public static final int actionbar_btn=0x7f020002;
-        public static final int actionbar_btn_normal=0x7f020003;
-        public static final int actionbar_btn_pressed=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int ic_title_share_default=0x7f020006;
-        public static final int icon=0x7f020007;
-        public static final int image_actionbar_back_indicator=0x7f020008;
+        public static final int ic_launcher=0x7f020000;
+        public static final int ic_title_share_default=0x7f020001;
+        public static final int icon=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f090006;
-        public static final int actionbar=0x7f090000;
-        public static final int descriptionView=0x7f090005;
-        public static final int imageView=0x7f090002;
-        public static final int listView=0x7f090001;
-        public static final int numberView=0x7f090003;
-        public static final int routeView=0x7f090004;
+        public static final int action_settings=0x7f080005;
+        public static final int descriptionView=0x7f080004;
+        public static final int imageView=0x7f080001;
+        public static final int listView=0x7f080000;
+        public static final int numberView=0x7f080002;
+        public static final int routeView=0x7f080003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int row=0x7f030001;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
+        public static final int main=0x7f070000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
-        public static final int actionbar_activity_not_found=0x7f060003;
-        public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060002;
+        public static final int action_settings=0x7f050001;
+        public static final int actionbar_activity_not_found=0x7f050003;
+        public static final int app_name=0x7f050000;
+        public static final int hello_world=0x7f050002;
     }
     public static final class style {
-        public static final int ActionBar=0x7f070002;
-        public static final int ActionBarHomeItem=0x7f070004;
-        public static final int ActionBarHomeLogo=0x7f070005;
-        public static final int ActionBarItem=0x7f070003;
-        public static final int ActionBarProgressBar=0x7f070006;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -91,10 +71,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f060001;
     }
 }

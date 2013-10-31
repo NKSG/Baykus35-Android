@@ -8,10 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-	<com.onurersen.baykus35.actionbar.ActionBar
-            android:id="@+id/actionbar"
-            style="@style/ActionBar" />
-
     <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
