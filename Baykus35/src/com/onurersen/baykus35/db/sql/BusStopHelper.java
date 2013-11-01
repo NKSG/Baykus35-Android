@@ -4,40 +4,30 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.onurersen.baykus35.db.util.SQLiteDatabaseConstants;
+
 /**
- * Creates application database.
  * 
- * @author itcuties
- *
+ * @author onurersen
+ * 
  */
-public class BusStopHelper extends SQLiteOpenHelper {
+public class BusStopHelper extends SQLiteOpenHelper implements
+		SQLiteDatabaseConstants {
 
 	public BusStopHelper(Context context) {
-		// Databse: todos_db, Version: 1
-		super(context, "todos_db", null, 1);
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
-	/**
-	 * Create simple table
-	 * todos
-	 * 		_id 	- key
-	 * 		todo	- todo text
-	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// Execute create table SQL
-		db.execSQL("CREATE TABLE todos (_id INTEGER PRIMARY KEY AUTOINCREMENT, todo TEXT NOT NULL);");
+		// TODO Auto-generated method stub
+
 	}
 
-	/**
-	 * Recreates table
-	 */
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVer, int newVer) {
-		// DROP table
-		db.execSQL("DROP TABLE IF EXISTS todos");
-		// Recreate table
-		onCreate(db);
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		// TODO Auto-generated method stub
+
 	}
-	
+
 }
