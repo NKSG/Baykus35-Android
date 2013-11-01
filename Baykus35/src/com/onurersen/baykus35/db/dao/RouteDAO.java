@@ -22,6 +22,9 @@ public class RouteDAO {
 
 	public RouteDAO(Context context) {
 		dbHelper = new RouteHelper(context);
+	}
+	
+	public void open() {
 		db = dbHelper.getReadableDatabase();
 	}
 

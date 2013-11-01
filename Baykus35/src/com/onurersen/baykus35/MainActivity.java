@@ -20,12 +20,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
         configureRouteList();
     }
     
     private void configureRouteList(){
-    	RouteModel.LoadModel();
+    	RouteModel.LoadModel(this);
         listView = (ListView) findViewById(R.id.listView);
         String[] ids = new String[RouteModel.Items.size()];
         for (int i= 0; i < ids.length; i++){
