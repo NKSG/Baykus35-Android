@@ -1,10 +1,10 @@
-package com.onurersen.baykus35.list;
+package com.onurersen.baykus35.list.route;
 /**
  * 
  * @author onurersen
  *
  */
-public class Item {
+public class RouteItem {
 
 	public int Id;
 	public String IconFile;
@@ -12,7 +12,7 @@ public class Item {
 	public String Route;
 	public String Description;
 
-	public Item(int id, String iconFile, String number, String route,
+	public RouteItem(int id, String iconFile, String number, String route,
 			String description) {
 		Id = id;
 		IconFile = iconFile;

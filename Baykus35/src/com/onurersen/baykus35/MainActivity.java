@@ -1,13 +1,15 @@
 package com.onurersen.baykus35;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.onurersen.baykus35.list.ItemAdapter;
-import com.onurersen.baykus35.list.Model;
+import com.onurersen.baykus35.list.route.RouteItemAdapter;
+import com.onurersen.baykus35.list.route.RouteModel;
 
 public class MainActivity extends Activity {
 
@@ -18,19 +20,20 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
         configureRouteList();
     }
     
     private void configureRouteList(){
-    	Model.LoadModel();
+    	RouteModel.LoadModel();
         listView = (ListView) findViewById(R.id.listView);
-        String[] ids = new String[Model.Items.size()];
+        String[] ids = new String[RouteModel.Items.size()];
         for (int i= 0; i < ids.length; i++){
 
             ids[i] = Integer.toString(i+1);
         }
 
-        ItemAdapter adapter = new ItemAdapter(this,R.layout.row, ids);
+        RouteItemAdapter adapter = new RouteItemAdapter(this,R.layout.row, ids);
         listView.setAdapter(adapter);
     }
 

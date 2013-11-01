@@ -1,4 +1,4 @@
-package com.onurersen.baykus35.list;
+package com.onurersen.baykus35.list.route;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -13,14 +13,18 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import com.onurersen.baykus35.R;
-
-public class ItemAdapter extends ArrayAdapter<String> {
+/**
+ * 
+ * @author onurersen
+ *
+ */
+public class RouteItemAdapter extends ArrayAdapter<String> {
 
     private final Context context;
     private final String[] Ids;
     private final int rowResourceId;
 
-    public ItemAdapter(Context context, int textViewResourceId, String[] objects) {
+    public RouteItemAdapter(Context context, int textViewResourceId, String[] objects) {
 
         super(context, textViewResourceId, objects);
 
@@ -42,10 +46,10 @@ public class ItemAdapter extends ArrayAdapter<String> {
         TextView descriptionView = (TextView) rowView.findViewById(R.id.descriptionView);
 
         int id = Integer.parseInt(Ids[position]);
-        String imageFile = Model.GetbyId(id).IconFile;
-        numberView.setText(Model.GetbyId(id).Number);
-        routeView.setText(Model.GetbyId(id).Route);
-        descriptionView.setText(Model.GetbyId(id).Description);
+        String imageFile = RouteModel.GetbyId(id).IconFile;
+        numberView.setText(RouteModel.GetbyId(id).Number);
+        routeView.setText(RouteModel.GetbyId(id).Route);
+        descriptionView.setText(RouteModel.GetbyId(id).Description);
         // get input stream
         InputStream ims = null;
         try {
