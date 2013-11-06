@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.onurersen.baykus35.db.data.ClsTariffs;
-import com.onurersen.baykus35.db.sql.RouteHelper;
+import com.onurersen.baykus35.db.helper.RouteHelper;
 
 /**
  * 

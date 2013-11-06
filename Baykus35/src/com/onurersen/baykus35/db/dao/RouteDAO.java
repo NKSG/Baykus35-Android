@@ -3,12 +3,12 @@ package com.onurersen.baykus35.db.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.onurersen.baykus35.db.data.ClsRoutes;
-import com.onurersen.baykus35.db.sql.RouteHelper;
+import com.onurersen.baykus35.db.util.LogCat;
+import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
 
 /**
  * 
@@ -17,69 +17,77 @@ import com.onurersen.baykus35.db.sql.RouteHelper;
  */
 public class RouteDAO {
 
-	private SQLiteDatabase db;
-	private RouteHelper dbHelper;
+	private SQLiteDatabaseHelper dbHelper;
 
-	public RouteDAO(Context context) {
-		dbHelper = new RouteHelper(context);
-	}
-	
-	public void open() {
-		db = dbHelper.getReadableDatabase();
-	}
-
-	public void close() {
-		db.close();
+	public RouteDAO(SQLiteDatabaseHelper dbHelper) {
+		this.dbHelper = dbHelper;
 	}
 
 	public List<ClsRoutes> getRoutes() {
+		LogCat.INSTANCE.info("RouteModel", "getRoutes()");
 		List<ClsRoutes> routeList = new ArrayList<ClsRoutes>();
+		try {
+			String[] tableColumns = new String[] { "RouteId", "RouteNumber", "RouteName", "RouteDescription",
+					"FirstStopName", "LastStopName" };
 
-		String[] tableColumns = new String[] { "RouteId", "RouteNumber",
-				"RouteName", "RouteDescription", "FirstStopName",
-				"LastStopName" };
+			Cursor cursor = getDbHelper().getWritableDatabase().query("Routes", tableColumns, null, null, null, null,
+					null);
+			cursor.moveToFirst();
+			int cursorIndex = 0;
+			while (!cursor.isAfterLast()) {
+				cursorIndex = 0;
+				ClsRoutes route = new ClsRoutes();
+				route.setRouteId(cursor.getInt(cursorIndex++));
+				route.setRouteNumber(cursor.getInt(cursorIndex++));
+				route.setRouteName(cursor.getString(cursorIndex++));
+				route.setRouteDescription(cursor.getString(cursorIndex++));
+				route.setFirstStopName(cursor.getString(cursorIndex++));
+				route.setLastStopName(cursor.getString(cursorIndex++));
+				routeList.add(route);
+				cursor.moveToNext();
+			}
+		} catch (Exception exception) {
+			Log.e(this.getClass().getName(), exception.getMessage());
+		} finally {
+			getDbHelper().close();
+		}
+		return routeList;
+	}
 
-		Cursor cursor = db.query("Routes", tableColumns, null, null, null,
-				null, null);
-		cursor.moveToFirst();
+	public ClsRoutes getRouteById(int routeId) {
+		ClsRoutes route = new ClsRoutes();
+		try {
 
-		int cursorIndex = 0;
-		while (!cursor.isAfterLast()) {
-			cursorIndex = 0;
-			ClsRoutes route = new ClsRoutes();
+			String[] tableColumns = new String[] { "RouteId", "RouteNumber", "RouteName", "RouteDescription",
+					"FirstStopName", "LastStopName" };
+
+			Cursor cursor = getDbHelper().getWritableDatabase().query("Routes", tableColumns, null, null, null, null,
+					null);
+
+			cursor.moveToFirst();
+			int cursorIndex = 0;
+
 			route.setRouteId(cursor.getInt(cursorIndex++));
 			route.setRouteNumber(cursor.getInt(cursorIndex++));
 			route.setRouteName(cursor.getString(cursorIndex++));
 			route.setRouteDescription(cursor.getString(cursorIndex++));
 			route.setFirstStopName(cursor.getString(cursorIndex++));
 			route.setLastStopName(cursor.getString(cursorIndex++));
-			routeList.add(route);
-			cursor.moveToNext();
-		}
 
-		return routeList;
+		} catch (Exception exception) {
+			Log.e(this.getClass().getName(), exception.getMessage());
+		} finally {
+			getDbHelper().close();
+		}
+		return route;
 	}
 
-	public ClsRoutes getRouteById(int routeId) {
+	public SQLiteDatabaseHelper getDbHelper() {
+		return dbHelper;
+	}
 
-		String[] tableColumns = new String[] { "RouteId", "RouteNumber",
-				"RouteName", "RouteDescription", "FirstStopName",
-				"LastStopName" };
-
-		Cursor cursor = db.query("Routes", tableColumns, null, null, null,
-				null, null);
-
-		cursor.moveToFirst();
-		int cursorIndex = 0;
-		ClsRoutes route = new ClsRoutes();
-		route.setRouteId(cursor.getInt(cursorIndex++));
-		route.setRouteNumber(cursor.getInt(cursorIndex++));
-		route.setRouteName(cursor.getString(cursorIndex++));
-		route.setRouteDescription(cursor.getString(cursorIndex++));
-		route.setFirstStopName(cursor.getString(cursorIndex++));
-		route.setLastStopName(cursor.getString(cursorIndex++));
-
-		return route;
+	public void setDbHelper(SQLiteDatabaseHelper dbHelper) {
+		this.dbHelper = dbHelper;
 	}
 
 }
