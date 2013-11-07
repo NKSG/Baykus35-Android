@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.util.Log;
 
 import com.onurersen.baykus35.db.data.ClsTariffs;
-import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
+import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 
 /**
  * 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.onurersen.baykus35.db.dao.TariffDAO;
 import com.onurersen.baykus35.db.data.ClsTariffs;
-import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
+import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 
 /**
  * 

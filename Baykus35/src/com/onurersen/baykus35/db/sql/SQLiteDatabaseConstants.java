@@ -1,4 +1,4 @@
-package com.onurersen.baykus35.sql;
+package com.onurersen.baykus35.db.sql;
 
 /**
  * 

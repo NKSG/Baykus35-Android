@@ -8,9 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.onurersen.baykus35.R;
+import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 import com.onurersen.baykus35.list.route.RouteItemAdapter;
 import com.onurersen.baykus35.list.route.RouteModel;
-import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
 
 /**
  * 
