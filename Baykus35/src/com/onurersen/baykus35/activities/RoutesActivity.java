@@ -1,4 +1,4 @@
-package com.onurersen.baykus35;
+package com.onurersen.baykus35.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.onurersen.baykus35.R;
 import com.onurersen.baykus35.list.route.RouteItemAdapter;
 import com.onurersen.baykus35.list.route.RouteModel;
 import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
