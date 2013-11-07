@@ -15,11 +15,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.onurersen.baykus35.R;
-import com.onurersen.baykus35.db.util.LogCat;
 import com.onurersen.baykus35.list.tariff.TariffItem;
 import com.onurersen.baykus35.list.tariff.TariffItemAdapter;
 import com.onurersen.baykus35.list.tariff.TariffModel;
 import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
+import com.onurersen.baykus35.utility.LogCat;
 
 /**
  * 

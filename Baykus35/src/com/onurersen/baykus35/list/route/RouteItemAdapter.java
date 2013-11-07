@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.onurersen.baykus35.R;
-import com.onurersen.baykus35.db.util.LogCat;
+import com.onurersen.baykus35.utility.LogCat;
 
 /**
  * 
