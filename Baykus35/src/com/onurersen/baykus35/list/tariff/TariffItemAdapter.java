@@ -19,17 +19,12 @@ public class TariffItemAdapter extends ArrayAdapter<String> {
 	private final Context context;
 	private final String[] Ids;
 	private final int rowResourceId;
-	private TariffModel model;
 
-	public TariffItemAdapter(Context context, int textViewResourceId, String[] objects, TariffModel model) {
-
+	public TariffItemAdapter(Context context, int textViewResourceId, String[] objects) {
 		super(context, textViewResourceId, objects);
-
 		this.context = context;
 		this.Ids = objects;
 		this.rowResourceId = textViewResourceId;
-		this.model = model;
-
 	}
 
 	@Override
@@ -42,8 +37,8 @@ public class TariffItemAdapter extends ArrayAdapter<String> {
 		TextView tariffTime2 = (TextView) rowView.findViewById(R.id.tariffTime2View);
 
 		int id = Integer.parseInt(Ids[position]);
-		tariffTime1.setText(model.GetbyId(id).Time1);
-		tariffTime2.setText(model.GetbyId(id).Time2);
+		tariffTime1.setText(TariffModel.GetbyId(id).Time1);
+		tariffTime2.setText(TariffModel.GetbyId(id).Time2);
 
 		return rowView;
 

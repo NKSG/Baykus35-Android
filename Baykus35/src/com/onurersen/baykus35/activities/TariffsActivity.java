@@ -1,13 +1,10 @@
 package com.onurersen.baykus35.activities;
 
-import java.util.ArrayList;
-
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,7 +13,6 @@ import android.widget.TextView;
 
 import com.onurersen.baykus35.R;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
-import com.onurersen.baykus35.list.tariff.TariffItem;
 import com.onurersen.baykus35.list.tariff.TariffItemAdapter;
 import com.onurersen.baykus35.list.tariff.TariffModel;
 import com.onurersen.baykus35.utility.LogCat;
@@ -93,14 +89,13 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		private void configureTariffList(int routeId, View rootView) {
 			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
-			TariffModel model = new TariffModel();
-			model.LoadModel(dbHelper, routeId);
+			TariffModel.LoadModel(dbHelper, routeId);
 			listView = (ListView) rootView.findViewById(R.id.listView);
-			String[] ids = new String[model.getItems().size()];
+			String[] ids = new String[TariffModel.Items.size()];
 			for (int i = 0; i < ids.length; i++) {
 				ids[i] = Integer.toString(i + 1);
 			}
-			TariffItemAdapter adapter = new TariffItemAdapter(getActivity(), R.layout.row_tariff, ids, model);
+			TariffItemAdapter adapter = new TariffItemAdapter(getActivity(), R.layout.row_tariff, ids);
 			listView.setAdapter(adapter);
 		}
 	}

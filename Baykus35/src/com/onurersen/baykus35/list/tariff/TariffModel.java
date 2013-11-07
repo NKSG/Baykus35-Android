@@ -27,21 +27,13 @@ public class TariffModel {
 		}
 	}
 
-	public TariffItem GetbyId(int id) {
-		for (TariffItem item : getItems()) {
+	public static TariffItem GetbyId(int id) {
+		for (TariffItem item : Items) {
 			if (item.index == id) {
 				return item;
 			}
 		}
 		return null;
-	}
-
-	public ArrayList<TariffItem> getItems() {
-		return Items;
-	}
-
-	public void setItems(ArrayList<TariffItem> items) {
-		Items = items;
 	}
 
 }
