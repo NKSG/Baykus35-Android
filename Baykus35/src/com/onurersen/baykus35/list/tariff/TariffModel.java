@@ -1,34 +1,47 @@
 package com.onurersen.baykus35.list.tariff;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.onurersen.baykus35.db.dao.TariffDAO;
+import com.onurersen.baykus35.db.data.ClsTariffs;
+import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
+
 /**
  * 
  * @author onurersen
- *
+ * 
  */
 public class TariffModel {
 
-    public static ArrayList<TariffItem> Items;
+	public static ArrayList<TariffItem> Items;
 
-    public static void LoadModel() {
+	public static void LoadModel(SQLiteDatabaseHelper helper, int routeId) {
+		TariffDAO dao = new TariffDAO(helper);
+		List<ClsTariffs> tariffs = dao.getTariffsByRouteId(routeId);
+		Items = new ArrayList<TariffItem>();
+		int tariffIndex = 1;
+		for (ClsTariffs clsTariffs : tariffs) {
+			Items.add(new TariffItem(tariffIndex++, clsTariffs.getTariffId(), clsTariffs.getRouteId(), clsTariffs
+					.getTime1(), clsTariffs.getTime2()));
+		}
+	}
 
-        Items = new ArrayList<TariffItem>();
-        Items.add(new TariffItem(1, "ic_list_bus.png", "63","Bornova - Konak","Osman Kibar - Manavkuyu - Zafer Payzın - Alsancak - Konak"));
-        Items.add(new TariffItem(2, "ic_list_bus.png", "104","Buca - Konak","Buca Cezaevi - Şirinyer - Eşrefpaşa - Varyant - Konak"));
-        Items.add(new TariffItem(3, "ic_list_bus.png", "152","Gaziemir - Konak","Sosyal Konutlar - Gaziemir - Karabağlar - Üçyol - Konak"));
-        Items.add(new TariffItem(4, "ic_list_bus.png", "180","Balçova - Konak","F.Altay - İnönü cad. - Varyant - Konak"));
-        Items.add(new TariffItem(5, "ic_list_bus.png", "542","Çiğli - Konak","Çiğli Merkez - Girne - Karşıyaka - Altınyol - Talatpaşa Konak"));
+	public TariffItem GetbyId(int id) {
+		for (TariffItem item : getItems()) {
+			if (item.index == id) {
+				return item;
+			}
+		}
+		return null;
+	}
 
-    }
+	public ArrayList<TariffItem> getItems() {
+		return Items;
+	}
 
-    public static TariffItem GetbyId(int id){
-
-        for(TariffItem item : Items) {
-            if (item.Id == id) {
-                return item;
-            }
-        }
-        return null;
-    }
+	public void setItems(ArrayList<TariffItem> items) {
+		Items = items;
+	}
 
 }

@@ -82,10 +82,17 @@ public class RouteDAO {
 		return route;
 	}
 
+	/**
+	 * @return the dbHelper
+	 */
 	public SQLiteDatabaseHelper getDbHelper() {
 		return dbHelper;
 	}
 
+	/**
+	 * @param dbHelper
+	 *            the dbHelper to set
+	 */
 	public void setDbHelper(SQLiteDatabaseHelper dbHelper) {
 		this.dbHelper = dbHelper;
 	}

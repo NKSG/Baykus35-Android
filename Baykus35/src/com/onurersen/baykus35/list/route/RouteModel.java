@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.onurersen.baykus35.db.dao.RouteDAO;
 import com.onurersen.baykus35.db.data.ClsRoutes;
-import com.onurersen.baykus35.db.helper.RouteHelper;
-import com.onurersen.baykus35.db.util.LogCat;
 import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
 
 /**
@@ -24,14 +22,14 @@ public class RouteModel {
 		Items = new ArrayList<RouteItem>();
 		int routeIndex = 1;
 		for (ClsRoutes clsRoutes : routes) {
-			Items.add(new RouteItem(routeIndex++, String.valueOf(clsRoutes.getRouteNumber()), clsRoutes.getRouteName(),
-					clsRoutes.getRouteDescription()));
+			Items.add(new RouteItem(routeIndex++, clsRoutes.getRouteId(), String.valueOf(clsRoutes.getRouteNumber()),
+					clsRoutes.getRouteName(), clsRoutes.getRouteDescription()));
 		}
 	}
 
 	public static RouteItem GetbyId(int id) {
 		for (RouteItem item : Items) {
-			if (item.Id == id) {
+			if (item.index == id) {
 				return item;
 			}
 		}

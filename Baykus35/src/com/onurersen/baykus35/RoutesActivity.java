@@ -1,8 +1,10 @@
 package com.onurersen.baykus35;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.onurersen.baykus35.list.route.RouteItemAdapter;
@@ -12,17 +14,26 @@ import com.onurersen.baykus35.sql.SQLiteDatabaseHelper;
 /**
  * 
  * @author onurersen
- *
+ * 
  */
-public class MainActivity extends Activity {
+public class RoutesActivity extends Activity {
 
 	ListView listView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_routes);
 		configureRouteList();
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+				Intent intent = new Intent(RoutesActivity.this, TariffsActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("route", Integer.parseInt(parent.getItemAtPosition(position).toString()));
+				startActivity(intent);
+			}
+		});
 	}
 
 	private void configureRouteList() {
@@ -33,14 +44,8 @@ public class MainActivity extends Activity {
 		for (int i = 0; i < ids.length; i++) {
 			ids[i] = Integer.toString(i + 1);
 		}
-		RouteItemAdapter adapter = new RouteItemAdapter(this, R.layout.row, ids);
+		RouteItemAdapter adapter = new RouteItemAdapter(this, R.layout.row_route, ids);
 		listView.setAdapter(adapter);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
 	}
 
 }

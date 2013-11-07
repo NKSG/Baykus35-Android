@@ -6,6 +6,11 @@ import android.content.DialogInterface;
 
 import com.onurersen.baykus35.R;
 
+/**
+ * 
+ * @author onurersen
+ *
+ */
 public class AlertUtil {
 	 
     private static final int MESSAGE_ALERT = 1;

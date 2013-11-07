@@ -1,5 +1,10 @@
 package com.onurersen.baykus35.sql;
 
+/**
+ * 
+ * @author onurersen
+ *
+ */
 public interface SQLiteDatabaseConstants {
 
 	public static int DATABASE_VERSION = 1;

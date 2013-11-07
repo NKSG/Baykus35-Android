@@ -1,24 +1,24 @@
 package com.onurersen.baykus35.list.tariff;
+
 /**
  * 
  * @author onurersen
- *
+ * 
  */
 public class TariffItem {
 
-	public int Id;
-	public String IconFile;
-	public String Number;
-	public String Route;
-	public String Description;
+	public int index;
+	public int TariffId;
+	public int RouteId;
+	public String Time1;
+	public String Time2;
 
-	public TariffItem(int id, String iconFile, String number, String route,
-			String description) {
-		Id = id;
-		IconFile = iconFile;
-		Number = number;
-		Route = route;
-		Description = description;
+	public TariffItem(int index, int TariffId, int RouteId, String Time1, String Time2) {
+		this.index = index;
+		this.TariffId = TariffId;
+		this.RouteId = RouteId;
+		this.Time1 = Time1;
+		this.Time2 = Time2;
 	}
 
 }
