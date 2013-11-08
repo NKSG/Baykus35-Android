@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.onurersen.baykus35.R;
-import com.onurersen.baykus35.customviews.TypeFaceSpan;
+import com.onurersen.baykus35.customization.CustomTypeFaceSpan;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 import com.onurersen.baykus35.list.route.RouteItemAdapter;
 import com.onurersen.baykus35.list.route.RouteModel;
@@ -49,7 +49,7 @@ public class RoutesActivity extends Activity {
 	private void customizeActionBar() {
 		final ActionBar actionBar = getActionBar();
 		SpannableString s = new SpannableString(getString(R.string.app_name));
-		s.setSpan(new TypeFaceSpan(this, "ChamsBold"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		s.setSpan(new CustomTypeFaceSpan(this, "ChamsBold"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		actionBar.setTitle(s);
 	}
 

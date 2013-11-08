@@ -13,7 +13,7 @@
         android:paddingBottom="2dp"
         android:paddingTop="2dp"/>
  
-    <com.onurersen.baykus35.customviews.CustomTextView
+    <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/numberView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:textSize="35sp" 
         android:textStyle="bold"/>
     
-    <com.onurersen.baykus35.customviews.CustomTextView
+    <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/routeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         android:textSize="20sp" 
         android:textStyle="bold"/>
  
-    <com.onurersen.baykus35.customviews.CustomTextView
+    <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/descriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

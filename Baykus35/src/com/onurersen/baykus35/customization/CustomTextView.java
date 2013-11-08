@@ -1,4 +1,4 @@
-package com.onurersen.baykus35.customviews;
+package com.onurersen.baykus35.customization;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -14,21 +14,24 @@ public class CustomTextView extends TextView {
 
 	public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		init();
+		init(context);
 	}
 
 	public CustomTextView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init();
+		init(context);
 	}
 
 	public CustomTextView(Context context) {
 		super(context);
-		init();
+		init(context);
 	}
 
-	private void init() {
-		Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ChamsBold.ttf");
+	private void init(Context context) {
+		Typeface tf = CustomFontCache.get("fonts/ChamsBold.ttf", context);
+		if (tf == null) {
+			tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ChamsBold.ttf");
+		}
 		setTypeface(tf);
 	}
 }

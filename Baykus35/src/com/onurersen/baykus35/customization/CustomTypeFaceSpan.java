@@ -1,4 +1,4 @@
-package com.onurersen.baykus35.customviews;
+package com.onurersen.baykus35.customization;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -12,13 +12,13 @@ import android.util.LruCache;
  * @author onurersen
  * 
  */
-public class TypeFaceSpan extends MetricAffectingSpan {
+public class CustomTypeFaceSpan extends MetricAffectingSpan {
 
 	private static LruCache<String, Typeface> sTypefaceCache = new LruCache<String, Typeface>(12);
 
 	private Typeface mTypeface;
 
-	public TypeFaceSpan(Context context, String typefaceName) {
+	public CustomTypeFaceSpan(Context context, String typefaceName) {
 		mTypeface = sTypefaceCache.get(typefaceName);
 
 		if (mTypeface == null) {

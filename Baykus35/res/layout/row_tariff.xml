@@ -3,7 +3,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
     
-    <com.onurersen.baykus35.customviews.CustomTextView
+    <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/tariffTime1View"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:textSize="35sp" 
         android:textStyle="bold"/>
     
-    <com.onurersen.baykus35.customviews.CustomTextView
+    <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/tariffTime2View"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         android:textSize="35sp" 
         android:textStyle="bold"/>
     
-    <com.onurersen.baykus35.customviews.CustomTextView
+    <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/tariffRouteView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

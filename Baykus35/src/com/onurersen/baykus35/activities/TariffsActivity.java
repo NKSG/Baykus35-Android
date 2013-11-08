@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.onurersen.baykus35.R;
+import com.onurersen.baykus35.customization.CustomArrayAdapter;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 import com.onurersen.baykus35.list.tariff.TariffItemAdapter;
 import com.onurersen.baykus35.list.tariff.TariffModel;
@@ -38,10 +39,17 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
-		actionBar.setListNavigationCallbacks(new ArrayAdapter<String>(actionBar.getThemedContext(),
-				android.R.layout.simple_list_item_1, android.R.id.text1, new String[] {
+		
+		ArrayAdapter<String> adapter = new CustomArrayAdapter(this, actionBar.getThemedContext(), android.R.layout.simple_list_item_1, new String[] {
 						getString(R.string.title_tariff), getString(R.string.title_route),
-						getString(R.string.title_info), }), this);
+						getString(R.string.title_info), });
+		actionBar.setListNavigationCallbacks(adapter, this);
+	
+//		ArrayAdapter<String> adapter = new MyCustomAdapter(this, R.layout.mainlvitem, mItems);
+//		actionBar.setListNavigationCallbacks(new CustomArrayAdapter<String>(actionBar.getThemedContext(),
+//				android.R.layout.simple_list_item_1, android.R.id.text1, new String[] {
+//						getString(R.string.title_tariff), getString(R.string.title_route),
+//						getString(R.string.title_info), }), this);
 	}
 
 	@Override
