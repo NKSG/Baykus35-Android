@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.onurersen.baykus35.R;
-import com.onurersen.baykus35.utility.LogCat;
 
 /**
  * 
@@ -45,7 +44,6 @@ public class RouteItemAdapter extends ArrayAdapter<String> {
 		TextView descriptionView = (TextView) rowView.findViewById(R.id.descriptionView);
 
 		int id = Integer.parseInt(Ids[position]);
-		LogCat.INSTANCE.info(this.getClass().getName(), id + "");
 		numberView.setText(RouteModel.GetbyId(id).Number);
 		routeView.setText(RouteModel.GetbyId(id).Route);
 		descriptionView.setText(RouteModel.GetbyId(id).Description);

@@ -8,7 +8,6 @@ import android.util.Log;
 
 import com.onurersen.baykus35.db.data.ClsRoutes;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
-import com.onurersen.baykus35.utility.LogCat;
 
 /**
  * 
@@ -24,7 +23,6 @@ public class RouteDAO {
 	}
 
 	public List<ClsRoutes> getRoutes() {
-		LogCat.INSTANCE.info("RouteModel", "getRoutes()");
 		List<ClsRoutes> routeList = new ArrayList<ClsRoutes>();
 		try {
 			String[] tableColumns = new String[] { "RouteId", "RouteNumber", "RouteName", "RouteDescription",
@@ -61,8 +59,8 @@ public class RouteDAO {
 			String[] tableColumns = new String[] { "RouteId", "RouteNumber", "RouteName", "RouteDescription",
 					"FirstStopName", "LastStopName" };
 
-			Cursor cursor = getDbHelper().getWritableDatabase().query("Routes", tableColumns, null, null, null, null,
-					null);
+			Cursor cursor = getDbHelper().getWritableDatabase().query("Routes", tableColumns, "RouteId = ?",
+					new String[] { String.valueOf(routeId) }, null, null, null, null);
 
 			cursor.moveToFirst();
 			int cursorIndex = 0;

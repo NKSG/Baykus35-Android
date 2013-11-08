@@ -35,10 +35,12 @@ public class TariffItemAdapter extends ArrayAdapter<String> {
 
 		TextView tariffTime1 = (TextView) rowView.findViewById(R.id.tariffTime1View);
 		TextView tariffTime2 = (TextView) rowView.findViewById(R.id.tariffTime2View);
+		TextView tariffRoute = (TextView) rowView.findViewById(R.id.tariffRouteView);
 
 		int id = Integer.parseInt(Ids[position]);
 		tariffTime1.setText(TariffModel.GetbyId(id).Time1);
 		tariffTime2.setText(TariffModel.GetbyId(id).Time2);
+		tariffRoute.setText(TariffModel.GetbyId(id).Route);
 
 		return rowView;
 

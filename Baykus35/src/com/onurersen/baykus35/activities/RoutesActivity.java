@@ -1,13 +1,17 @@
 package com.onurersen.baykus35.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.onurersen.baykus35.R;
+import com.onurersen.baykus35.customviews.TypeFaceSpan;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 import com.onurersen.baykus35.list.route.RouteItemAdapter;
 import com.onurersen.baykus35.list.route.RouteModel;
@@ -26,6 +30,11 @@ public class RoutesActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_routes);
 		configureRouteList();
+		customizeActionBar();
+		assignRouteOnClick();
+	}
+
+	private void assignRouteOnClick() {
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -35,6 +44,13 @@ public class RoutesActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+	}
+
+	private void customizeActionBar() {
+		final ActionBar actionBar = getActionBar();
+		SpannableString s = new SpannableString(getString(R.string.app_name));
+		s.setSpan(new TypeFaceSpan(this, "ChamsBold"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		actionBar.setTitle(s);
 	}
 
 	private void configureRouteList() {

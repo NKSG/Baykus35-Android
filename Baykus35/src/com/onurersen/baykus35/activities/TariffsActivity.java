@@ -15,7 +15,6 @@ import com.onurersen.baykus35.R;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 import com.onurersen.baykus35.list.tariff.TariffItemAdapter;
 import com.onurersen.baykus35.list.tariff.TariffModel;
-import com.onurersen.baykus35.utility.LogCat;
 
 /**
  * 
@@ -41,8 +40,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		actionBar.setListNavigationCallbacks(new ArrayAdapter<String>(actionBar.getThemedContext(),
 				android.R.layout.simple_list_item_1, android.R.id.text1, new String[] {
-						getString(R.string.title_section1), getString(R.string.title_section2),
-						getString(R.string.title_section3), }), this);
+						getString(R.string.title_tariff), getString(R.string.title_route),
+						getString(R.string.title_info), }), this);
 	}
 
 	@Override
@@ -59,7 +58,6 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 	@Override
 	public boolean onNavigationItemSelected(int position, long id) {
-		LogCat.INSTANCE.info(this.getClass().getName(), "Position : " + position);
 		Fragment fragment = new TariffSectionFragment();
 		Bundle args = new Bundle();
 		args.putInt(TariffSectionFragment.ARG_SECTION_NUMBER, position + 1);

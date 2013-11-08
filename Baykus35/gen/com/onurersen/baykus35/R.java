@@ -35,6 +35,7 @@ public final class R {
         public static final int numberView=0x7f080004;
         public static final int routeView=0x7f080005;
         public static final int section_label=0x7f080002;
+        public static final int tariffRouteView=0x7f080009;
         public static final int tariffTime1View=0x7f080007;
         public static final int tariffTime2View=0x7f080008;
     }
@@ -48,13 +49,11 @@ public final class R {
         public static final int row_tariff=0x7f030006;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060002;
-        public static final int title_activity_tariff=0x7f060003;
-        public static final int title_section1=0x7f060004;
-        public static final int title_section2=0x7f060005;
-        public static final int title_section3=0x7f060006;
+        public static final int title_activity_tariff=0x7f060001;
+        public static final int title_info=0x7f060004;
+        public static final int title_route=0x7f060003;
+        public static final int title_tariff=0x7f060002;
     }
     public static final class style {
         public static final int ActionBar=0x7f070002;

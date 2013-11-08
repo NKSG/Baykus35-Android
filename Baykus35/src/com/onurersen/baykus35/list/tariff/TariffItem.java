@@ -12,13 +12,15 @@ public class TariffItem {
 	public int RouteId;
 	public String Time1;
 	public String Time2;
+	public String Route;
 
-	public TariffItem(int index, int TariffId, int RouteId, String Time1, String Time2) {
+	public TariffItem(int index, int TariffId, int RouteId, String Time1, String Time2,String Route) {
 		this.index = index;
 		this.TariffId = TariffId;
 		this.RouteId = RouteId;
 		this.Time1 = Time1;
 		this.Time2 = Time2;
+		this.Route = Route;
 	}
 
 }
