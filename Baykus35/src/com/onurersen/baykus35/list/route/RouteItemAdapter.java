@@ -38,7 +38,7 @@ public class RouteItemAdapter extends ArrayAdapter<String> {
 
 		View rowView = inflater.inflate(rowResourceId, parent, false);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView);
-		imageView.setBackgroundResource(R.drawable.ic_list_bus);
+		imageView.setBackgroundResource(R.drawable.img_bus);
 		TextView numberView = (TextView) rowView.findViewById(R.id.numberView);
 		TextView routeView = (TextView) rowView.findViewById(R.id.routeView);
 		TextView descriptionView = (TextView) rowView.findViewById(R.id.descriptionView);
