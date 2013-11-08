@@ -39,17 +39,10 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
-		
-		ArrayAdapter<String> adapter = new CustomArrayAdapter(this, actionBar.getThemedContext(), android.R.layout.simple_list_item_1, new String[] {
-						getString(R.string.title_tariff), getString(R.string.title_route),
-						getString(R.string.title_info), });
+		ArrayAdapter<String> adapter = new CustomArrayAdapter(this, actionBar.getThemedContext(),
+				android.R.layout.simple_list_item_1, new String[] { getString(R.string.title_tariff),
+						getString(R.string.title_route), getString(R.string.title_info), });
 		actionBar.setListNavigationCallbacks(adapter, this);
-	
-//		ArrayAdapter<String> adapter = new MyCustomAdapter(this, R.layout.mainlvitem, mItems);
-//		actionBar.setListNavigationCallbacks(new CustomArrayAdapter<String>(actionBar.getThemedContext(),
-//				android.R.layout.simple_list_item_1, android.R.id.text1, new String[] {
-//						getString(R.string.title_tariff), getString(R.string.title_route),
-//						getString(R.string.title_info), }), this);
 	}
 
 	@Override

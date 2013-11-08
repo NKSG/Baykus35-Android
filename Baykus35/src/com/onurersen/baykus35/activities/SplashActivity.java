@@ -18,6 +18,7 @@ public class SplashActivity extends Activity {
 
 	private static String TAG = SplashActivity.class.getName();
 	private static long SLEEP_TIME = 1;
+	private static boolean showSplashScreen = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,16 @@ public class SplashActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-		setContentView(R.layout.splash);
-
-		IntentLauncher launcher = new IntentLauncher();
-		launcher.start();
+		if (!showSplashScreen) {
+			setContentView(R.layout.splash);
+			showSplashScreen = true;
+			IntentLauncher launcher = new IntentLauncher();
+			launcher.start();
+		} else {
+			Intent intent = new Intent(SplashActivity.this, RoutesActivity.class);
+			SplashActivity.this.startActivity(intent);
+			SplashActivity.this.finish();
+		}
 	}
 
 	private class IntentLauncher extends Thread {
