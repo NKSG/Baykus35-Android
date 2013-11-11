@@ -25,6 +25,7 @@ public class CustomArrayAdapter extends ArrayAdapter<String> {
 		super(context, textViewResourceId, titles);
 		this.activity = activity;
 		this.titles = titles;
+		this.setDropDownViewResource(R.layout.dropdown_tariff);
 	}
 
 	@Override
