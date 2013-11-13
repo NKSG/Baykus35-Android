@@ -1,16 +1,50 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".TariffActivity$DummySectionFragment" >
+    tools:context=".TariffsActivity" >
 
-    <TextView
-        android:id="@+id/section_label"
+    <ImageView
+        android:layout_marginTop="100dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/img_aboutlogo"
+        android:contentDescription="@string/app_name" />
 
-</RelativeLayout>
+    <com.onurersen.baykus35.customization.CustomTextView
+        android:id="@+id/aboutInfoView"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/about_info"
+        android:layout_width="500dp"
+        android:paddingTop="50dp"
+        android:paddingLeft="5dp"
+        android:textSize="20sp" />
+
+    <com.onurersen.baykus35.customization.CustomTextView
+        android:id="@+id/aboutInfoExtra1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/about_info_extra1"
+        android:layout_width="500dp"
+        android:paddingTop="25dp"
+        android:paddingLeft="5dp"
+        android:textSize="20sp" />
+
+    <com.onurersen.baykus35.customization.CustomTextView
+        android:id="@+id/aboutInfoExtra2"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/about_info_extra2"
+        android:layout_width="500dp"
+        android:paddingTop="25dp"
+        android:paddingLeft="5dp"
+        android:textSize="20sp" />
+
+</LinearLayout>

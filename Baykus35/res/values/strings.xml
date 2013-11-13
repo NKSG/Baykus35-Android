@@ -6,5 +6,13 @@
     <string name="title_tariff">Tarife Bilgisi</string>
     <string name="title_route">Güzergah</string>
     <string name="title_info">Bilgi</string>
-
+    <string name="about_info">Baykus35 ESHOT Genel Müdürlüğü tarafından 
+        				sağlanan Gece Otobüs sefer tarifelerini sunan bir uygulamadır.
+        				Uygulamada geçen tarife bilgilerine www.eshot.gov.tr adresi 
+        				üzerinden de erişilebilir.</string>
+    <string name="about_info_extra1">*Haritadaki otobüs durak yerleri 
+        				yaklaşık konumları ile  gösterilmektedir.</string>
+    <string name="about_info_extra2">*Haritadaki otobüs duraklarına 
+	    olan uzaklıklar kuş uçuşu hesaplanmaktadır.</string>
+    <string name="map_error_title">Uyarı</string>
 </resources>
