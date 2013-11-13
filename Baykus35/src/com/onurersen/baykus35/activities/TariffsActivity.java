@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.onurersen.baykus35.R;
@@ -182,7 +183,9 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 			for (MarkerData d : markers) {
 				LatLng location = new LatLng(d.lat, d.lng);
-				getMap().addMarker(new MarkerOptions().position(location).title(d.title).snippet(d.snippet));
+				getMap().addMarker(
+						new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.img_busstop))
+								.position(location).title(d.title).snippet(d.snippet));
 			}
 
 			getMap().setIndoorEnabled(true);
