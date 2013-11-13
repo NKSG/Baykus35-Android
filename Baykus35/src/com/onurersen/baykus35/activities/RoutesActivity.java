@@ -49,7 +49,7 @@ public class RoutesActivity extends Activity {
 	private void customizeActionBar() {
 		final ActionBar actionBar = getActionBar();
 		SpannableString s = new SpannableString(getString(R.string.app_name));
-		s.setSpan(new CustomTypeFaceSpan(this, "ChamsBold"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		s.setSpan(new CustomTypeFaceSpan(this, "CustomFont"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		actionBar.setTitle(s);
 	}
 

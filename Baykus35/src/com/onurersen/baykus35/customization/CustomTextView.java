@@ -28,9 +28,9 @@ public class CustomTextView extends TextView {
 	}
 
 	private void init(Context context) {
-		Typeface tf = CustomFontCache.get("fonts/ChamsBold.ttf", context);
+		Typeface tf = CustomFontCache.get("fonts/CustomFont.ttf", context);
 		if (tf == null) {
-			tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ChamsBold.ttf");
+			tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/CustomFont.ttf");
 		}
 		setTypeface(tf);
 	}
