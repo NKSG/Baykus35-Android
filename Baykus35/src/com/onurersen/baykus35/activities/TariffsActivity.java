@@ -1,5 +1,8 @@
 package com.onurersen.baykus35.activities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,12 +18,13 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.onuersen.baykus35.busstop.BusStopModel;
 import com.onurersen.baykus35.R;
 import com.onurersen.baykus35.customization.CustomArrayAdapter;
+import com.onurersen.baykus35.db.data.ClsBusStops;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 import com.onurersen.baykus35.list.tariff.TariffItemAdapter;
 import com.onurersen.baykus35.list.tariff.TariffModel;
-import com.onurersen.baykus35.utility.AlertUtil;
 import com.onurersen.baykus35.utility.LogCat;
 
 /**
@@ -80,7 +84,7 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			Fragment fragment = new MapSectionFragment();
 			Bundle args = new Bundle();
 			args.putInt(TariffSectionFragment.ARG_SECTION_NUMBER, position + 1);
-
+			args.putInt(TariffSectionFragment.ARG_SELECTED_ROUTE_ID, getSelectedRouteId());
 			fragment.setArguments(args);
 			getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
 		} else if (position == DROPDOWN_INDEX_ABOUT) {
@@ -131,14 +135,17 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 * fragment.
 		 */
 		public static final String ARG_SECTION_NUMBER = "section_number";
+		public static final String ARG_SELECTED_ROUTE_ID = "route";
 		SupportMapFragment fm;
 		GoogleMap map;
 		private static View rootView;
+		ArrayList<MarkerData> markers = new ArrayList<MarkerData>();
 
-		final LatLng CENTER = new LatLng(43.661049, -79.400917);
+		// final LatLng CENTER = new LatLng(43.661049, -79.400917);
 
-		class Data {
-			public Data(float lng, float lat, String title, String snippet) {
+		class MarkerData {
+
+			public MarkerData(float lng, float lat, String title, String snippet) {
 				super();
 				this.lat = (float) lat;
 				this.lng = (float) lng;
@@ -150,28 +157,15 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			float lng;
 			String title;
 			String snippet;
-		}
 
-		Data[] data = {
-				new Data(-79.400917f, 43.661049f, "New New College Res", "Residence building (new concrete high-rise)"),
-				new Data(-79.394524f, 43.655796f, "Baldwin Street", "Here be many good restaurants!"),
-				new Data(-79.402206f, 43.657688f, "College St",
-						"Many discount computer stores if you forgot a cable or need to buy hardware."),
-				new Data(-79.390381f, 43.659878f, "Queens Park Subway",
-						"Quickest way to the north-south (Yonge-University-Spadina) subway/metro line"),
-				new Data(-79.403732f, 43.666801f, "Spadina Subway",
-						"Quickest way to the east-west (Bloor-Danforth) subway/metro line"),
-				new Data(-79.399696f, 43.667873f, "St George Subway back door",
-						"Token-only admittance, else use Spadina or Bedford entrances!"),
-				new Data(-79.384163f, 43.655083f, "Eaton Centre (megamall)",
-						"One of the largest indoor shopping centres in eastern Canada. Runs from Dundas to Queen."), };
+		}
 
 		public MapSectionFragment() {
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+			int routeId = getArguments().getInt(ARG_SELECTED_ROUTE_ID);
 			if (rootView != null) {
 				ViewGroup parent = (ViewGroup) rootView.getParent();
 				if (parent != null)
@@ -182,20 +176,20 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 					rootView = inflater.inflate(R.layout.fragment_map, container, false);
 			} catch (Exception exception) {
 				LogCat.INSTANCE.error(this.getClass().getName(), exception.getMessage());
-				// AlertUtil.messageAlert(getActivity().getApplicationContext(),
-				// getActivity().getString(R.string.map_error_title),
-				// exception.getMessage());
 			}
 
-			for (Data d : data) {
+			fillBusStopMarkers(markers, routeId);
+
+			for (MarkerData d : markers) {
 				LatLng location = new LatLng(d.lat, d.lng);
 				getMap().addMarker(new MarkerOptions().position(location).title(d.title).snippet(d.snippet));
 			}
 
 			getMap().setIndoorEnabled(true);
-			// getMap().setMyLocationEnabled(true);
+			getMap().setMyLocationEnabled(true);
 			getMap().moveCamera(CameraUpdateFactory.zoomTo(14));
-			getMap().animateCamera(CameraUpdateFactory.newLatLng(CENTER), 1750, null);
+			getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng(markers.get(0).lat, markers.get(0).lng)),
+					1750, null);
 
 			return rootView;
 		}
@@ -220,6 +214,16 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		public void setMap(GoogleMap map) {
 			this.map = map;
+		}
+
+		private void fillBusStopMarkers(ArrayList<MarkerData> markers, int selectedRouteId) {
+			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
+			BusStopModel.LoadModel(dbHelper, selectedRouteId);
+			List<ClsBusStops> items = BusStopModel.Items;
+			for (ClsBusStops clsBusStop : items) {
+				markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
+						.getStopName(), "Uzaklik"));
+			}
 		}
 
 	}
