@@ -168,14 +168,50 @@ containing a value of this type.
         public static final int title_background=0x7f04000a;
     }
     public static final class dimen {
+        public static final int actionbar_height=0x7f08000b;
+        public static final int actionbar_item_height=0x7f08000c;
+        public static final int actionbar_item_width=0x7f08000d;
         /**  Default screen margins, per the Android Design guidelines. 
 
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f080000;
-        public static final int activity_vertical_margin=0x7f080001;
+        public static final int activity_horizontal_margin=0x7f080024;
+        public static final int activity_vertical_margin=0x7f080025;
+        public static final int btn_red_text_size=0x7f080021;
+        public static final int dashboard_drawable_padding=0x7f080022;
+        public static final int dashboard_drawable_textsize=0x7f080023;
+        public static final int help_land_layout_button_row_margin_right=0x7f080019;
+        public static final int help_land_layout_button_row_margin_top=0x7f080018;
+        public static final int help_land_layout_image_margin_right=0x7f08001a;
+        public static final int help_land_layout_margin_left=0x7f080015;
+        public static final int help_land_layout_margin_top=0x7f080017;
+        public static final int help_land_layout_margin_top_first=0x7f080016;
+        public static final int help_port_layout_button_row_margin_right=0x7f08001f;
+        public static final int help_port_layout_button_row_margin_top=0x7f08001e;
+        public static final int help_port_layout_image_margin_right=0x7f080020;
+        public static final int help_port_layout_margin_left=0x7f08001b;
+        public static final int help_port_layout_margin_top=0x7f08001d;
+        public static final int help_port_layout_margin_top_first=0x7f08001c;
+        public static final int margin_10dp=0x7f08000a;
+        public static final int menu_item_image_margin_right=0x7f080005;
+        public static final int menu_item_layout_padding=0x7f080006;
+        public static final int menu_item_margin_bottom=0x7f080004;
+        public static final int menu_item_margin_top=0x7f080003;
+        public static final int menu_item_text_size=0x7f080002;
+        public static final int menu_title_padding_left=0x7f080001;
+        public static final int menu_title_text_size=0x7f080000;
+        public static final int segment_radio_layout_margin=0x7f080013;
+        public static final int segment_radio_min_height=0x7f080011;
+        public static final int segment_radio_min_width=0x7f080012;
+        public static final int setting_title_text_size=0x7f080007;
+        public static final int settings_caption_size=0x7f08000e;
+        public static final int settings_help_text_size=0x7f080014;
+        public static final int settings_input_text_size=0x7f08000f;
+        public static final int settings_layout_margin=0x7f080010;
+        public static final int textsize_20dip=0x7f080009;
+        public static final int textsize_30dip=0x7f080008;
     }
     public static final class drawable {
         public static final int common_signin_btn_icon_dark=0x7f020000;
@@ -212,7 +248,6 @@ containing a value of this type.
         public static final int img_busstop=0x7f02001f;
         public static final int img_info_bus=0x7f020020;
         public static final int img_splash=0x7f020021;
-        public static final int splash=0x7f020022;
     }
     public static final class id {
         public static final int aboutInfoExtra1=0x7f050009;
@@ -371,14 +406,6 @@ containing a value of this type.
     }
     public static final class style {
         public static final int ActionBar=0x7f090002;
-        /** 
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
-         */
-        public static final int AppBaseTheme=0x7f090003;
         public static final int ThemeSelector=0x7f090000;
         public static final int WindowTitleBackground=0x7f090001;
     }
