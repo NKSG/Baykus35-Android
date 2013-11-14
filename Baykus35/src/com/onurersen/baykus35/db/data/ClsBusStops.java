@@ -13,9 +13,9 @@ public class ClsBusStops {
 
 	private int RouteId;
 
-	private float Latitude;
+	private double Latitude;
 
-	private float Longitude;
+	private double Longitude;
 
 	/**
 	 * @return the stopId
@@ -65,7 +65,7 @@ public class ClsBusStops {
 	/**
 	 * @return the latitude
 	 */
-	public float getLatitude() {
+	public double getLatitude() {
 		return Latitude;
 	}
 
@@ -73,14 +73,14 @@ public class ClsBusStops {
 	 * @param latitude
 	 *            the latitude to set
 	 */
-	public void setLatitude(float latitude) {
+	public void setLatitude(double latitude) {
 		Latitude = latitude;
 	}
 
 	/**
 	 * @return the longitude
 	 */
-	public float getLongitude() {
+	public double getLongitude() {
 		return Longitude;
 	}
 
@@ -88,7 +88,7 @@ public class ClsBusStops {
 	 * @param longitude
 	 *            the longitude to set
 	 */
-	public void setLongitude(float longitude) {
+	public void setLongitude(double longitude) {
 		Longitude = longitude;
 	}
 

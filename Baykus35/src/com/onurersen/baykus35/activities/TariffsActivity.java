@@ -4,10 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ActionBar;
+import android.content.Context;
+import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -15,9 +24,13 @@ import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.onurersen.baykus35.R;
 import com.onurersen.baykus35.busstop.BusStopModel;
@@ -130,32 +143,34 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 	}
 
-	public static class MapSectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
+	public static class MapSectionFragment extends Fragment implements OnInfoWindowClickListener, OnMarkerClickListener {
+
 		public static final String ARG_SECTION_NUMBER = "section_number";
 		public static final String ARG_SELECTED_ROUTE_ID = "route";
+
+		public static final int MENU_ITEM_ID_NAVIGATE = 0;
+
 		SupportMapFragment fm;
 		GoogleMap map;
+
 		private static View rootView;
+
 		ArrayList<MarkerData> markers = new ArrayList<MarkerData>();
 
-		// final LatLng CENTER = new LatLng(43.661049, -79.400917);
+		Marker selectedMarker;
 
 		class MarkerData {
 
-			public MarkerData(float lng, float lat, String title, String snippet) {
+			public MarkerData(double lng, double lat, String title, String snippet) {
 				super();
-				this.lat = (float) lat;
-				this.lng = (float) lng;
+				this.lat = (double) lat;
+				this.lng = (double) lng;
 				this.title = title;
 				this.snippet = snippet;
 			}
 
-			float lat;
-			float lng;
+			double lat;
+			double lng;
 			String title;
 			String snippet;
 
@@ -173,8 +188,7 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 					parent.removeView(rootView);
 			}
 			try {
-				if (rootView == null)
-					rootView = inflater.inflate(R.layout.fragment_map, container, false);
+				rootView = inflater.inflate(R.layout.fragment_map, container, false);
 			} catch (Exception exception) {
 				LogCat.INSTANCE.error(this.getClass().getName(), exception.getMessage());
 			}
@@ -188,13 +202,30 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 								.position(location).title(d.title).snippet(d.snippet));
 			}
 
+			UiSettings settings = getMap().getUiSettings();
+			settings.setAllGesturesEnabled(true);
+			settings.setZoomControlsEnabled(false);
+
 			getMap().setIndoorEnabled(true);
+			getMap().setBuildingsEnabled(true);
+			getMap().setOnInfoWindowClickListener(this);
+			getMap().setOnMarkerClickListener(this);
+			getMap().setTrafficEnabled(true);
 			getMap().setMyLocationEnabled(true);
 			getMap().moveCamera(CameraUpdateFactory.zoomTo(14));
 			getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng(markers.get(0).lat, markers.get(0).lng)),
 					1750, null);
 
+			registerForContextMenu(rootView);
+
 			return rootView;
+		}
+
+		private Location getLastKnownLocation() {
+			LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+			Criteria crit = new Criteria();
+			String lastLocation = lm.getBestProvider(crit, false);
+			return lm.getLastKnownLocation(lastLocation);
 		}
 
 		public SupportMapFragment getFm() {
@@ -223,19 +254,68 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
 			BusStopModel.LoadModel(dbHelper, selectedRouteId);
 			List<ClsBusStops> items = BusStopModel.Items;
+			Location currentLocation = getLastKnownLocation();
+			Location markerLocation = new Location("BusStopMarker");
 			for (ClsBusStops clsBusStop : items) {
-				markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
-						.getStopName(), "Uzaklik"));
+				markerLocation.setLatitude(clsBusStop.getLatitude());
+				markerLocation.setLongitude(clsBusStop.getLongitude());
+				float distance = currentLocation.distanceTo(markerLocation);
+				if (distance > 1000) {
+					markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
+							.getStopName(), getActivity().getString(R.string.distance_kilometers, distance / 1000)));
+				} else {
+					markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
+							.getStopName(), getActivity().getString(R.string.distance_meters, distance)));
+				}
 			}
+		}
+
+		@Override
+		public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+			super.onCreateContextMenu(menu, v, menuInfo);
+			menu.setHeaderTitle(getSelectedMarker().getTitle());
+			menu.add(0, v.getId(), 0, getActivity().getString(R.string.take_me_to_this_stop));
+		}
+
+		@Override
+		public boolean onMarkerClick(Marker marker) {
+			setSelectedMarker(marker);
+			return false;
+		}
+
+		@Override
+		public boolean onContextItemSelected(MenuItem item) {
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="
+					+ getSelectedMarker().getPosition().latitude + "," + getSelectedMarker().getPosition().longitude));
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
+			return true;
+		}
+
+		@Override
+		public void onInfoWindowClick(Marker marker) {
+			getActivity().openContextMenu(rootView);
+		}
+
+		/**
+		 * @return the selectedMarker
+		 */
+		public Marker getSelectedMarker() {
+			return selectedMarker;
+		}
+
+		/**
+		 * @param selectedMarker
+		 *            the selectedMarker to set
+		 */
+		public void setSelectedMarker(Marker selectedMarker) {
+			this.selectedMarker = selectedMarker;
 		}
 
 	}
 
 	public static class AboutSectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
+
 		public static final String ARG_SECTION_NUMBER = "section_number";
 
 		public AboutSectionFragment() {
