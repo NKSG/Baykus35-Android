@@ -21,9 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -216,6 +218,23 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng(markers.get(0).lat, markers.get(0).lng)),
 					1750, null);
 
+			getMap().setInfoWindowAdapter(new InfoWindowAdapter() {
+				@Override
+				public View getInfoWindow(Marker marker) {
+					return null;
+				}
+
+				@Override
+				public View getInfoContents(Marker marker) {
+					View v = getActivity().getLayoutInflater().inflate(R.layout.info_window, null);
+					TextView tvLat = (TextView) v.findViewById(R.id.busStopTitleView);
+					TextView tvLng = (TextView) v.findViewById(R.id.busStopDescriptionView);
+					tvLat.setText(marker.getTitle());
+					tvLng.setText(marker.getSnippet());
+					return v;
+				}
+			});
+
 			registerForContextMenu(rootView);
 
 			return rootView;
@@ -274,7 +293,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 			super.onCreateContextMenu(menu, v, menuInfo);
 			menu.setHeaderTitle(getSelectedMarker().getTitle());
-			menu.add(0, v.getId(), 0, getActivity().getString(R.string.take_me_to_this_stop));
+			menu.add(0, v.getId(), 0,
+					getActivity().getString(R.string.take_me_to_this_stop, getSelectedMarker().getTitle()));
 		}
 
 		@Override

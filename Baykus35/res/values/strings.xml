@@ -14,9 +14,13 @@
         				yaklaşık konumları ile  gösterilmektedir.</string>
     <string name="about_info_extra2">*Haritadaki otobüs duraklarına 
 	    olan uzaklıklar kuş uçuşu hesaplanmaktadır.</string>
+    <string name="about_info_extra3">Uygulama ile ilgili her türlü şikayet 
+        ve önerilerinizi baykusotuzbes@gmail.com adresine gönderebilirsiniz.</string>
     <string name="error_title">Uyarı</string>
-    <string name="distance_meters">Bu durağa yaklaşık %.2f metre uzaklıktasınız</string>
-    <string name="distance_kilometers">Bu durağa yaklaşık %.2f kilometre uzaklıktasınız</string>
-    <string name="take_me_to_this_stop">Beni bu durağa götür!</string>
+    <string name="distance_meters">Bu durağa yaklaşık %.2f metre uzaklıktasınız.</string>
+    <string name="distance_kilometers">Bu durağa yaklaşık %.2f kilometre uzaklıktasınız.</string>
+    <string name="take_me_to_this_stop">Beni %s durağına götür!</string>
+    <string name="click_to_navigate">Bu durağa navigasyon başlatmak için tıklayın.</string>
     <string name="cancel_action">Vazgeç</string>
+
 </resources>

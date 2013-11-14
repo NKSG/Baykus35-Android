@@ -46,5 +46,15 @@
         android:paddingTop="25dp"
         android:paddingLeft="5dp"
         android:textSize="20sp" />
+    
+    <com.onurersen.baykus35.customization.CustomTextView
+        android:id="@+id/aboutInfoExtra3"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/about_info_extra3"
+        android:layout_width="500dp"
+        android:paddingTop="150dp"
+        android:paddingLeft="5dp"
+        android:textSize="20sp" />
 
 </LinearLayout>

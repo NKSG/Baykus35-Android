@@ -210,31 +210,37 @@ containing a value of this type.
         public static final int img_aboutlogo=0x7f02001d;
         public static final int img_bus=0x7f02001e;
         public static final int img_busstop=0x7f02001f;
-        public static final int img_splash=0x7f020020;
-        public static final int splash=0x7f020021;
+        public static final int img_info_bus=0x7f020020;
+        public static final int img_splash=0x7f020021;
+        public static final int splash=0x7f020022;
     }
     public static final class id {
         public static final int aboutInfoExtra1=0x7f050009;
         public static final int aboutInfoExtra2=0x7f05000a;
+        public static final int aboutInfoExtra3=0x7f05000b;
         public static final int aboutInfoView=0x7f050008;
+        public static final int busStopClickToNavigateView=0x7f050011;
+        public static final int busStopDescriptionView=0x7f050010;
+        public static final int busStopTitleView=0x7f05000f;
         public static final int container=0x7f050006;
-        public static final int descriptionView=0x7f050011;
+        public static final int descriptionView=0x7f050016;
         public static final int hybrid=0x7f050004;
-        public static final int imageView=0x7f05000e;
+        public static final int imageView=0x7f050013;
+        public static final int infoImageView=0x7f05000e;
         public static final int listView=0x7f050005;
-        public static final int map=0x7f05000c;
-        public static final int mapLayout=0x7f05000b;
+        public static final int map=0x7f05000d;
+        public static final int mapLayout=0x7f05000c;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int numberView=0x7f05000f;
-        public static final int routeView=0x7f050010;
+        public static final int numberView=0x7f050014;
+        public static final int routeView=0x7f050015;
         public static final int satellite=0x7f050002;
         public static final int spinnerDropdownTextView=0x7f050007;
-        public static final int tariffRouteView=0x7f050014;
-        public static final int tariffTime1View=0x7f050012;
-        public static final int tariffTime2View=0x7f050013;
+        public static final int tariffRouteView=0x7f050019;
+        public static final int tariffTime1View=0x7f050017;
+        public static final int tariffTime2View=0x7f050018;
         public static final int terrain=0x7f050003;
-        public static final int txtListText=0x7f05000d;
+        public static final int txtListText=0x7f050012;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
@@ -246,15 +252,17 @@ containing a value of this type.
         public static final int fragment_about=0x7f030003;
         public static final int fragment_map=0x7f030004;
         public static final int fragment_tariff=0x7f030005;
-        public static final int navigator_tariff=0x7f030006;
-        public static final int row_route=0x7f030007;
-        public static final int row_tariff=0x7f030008;
-        public static final int splash=0x7f030009;
+        public static final int info_window=0x7f030006;
+        public static final int navigator_tariff=0x7f030007;
+        public static final int row_route=0x7f030008;
+        public static final int row_tariff=0x7f030009;
+        public static final int splash=0x7f03000a;
     }
     public static final class string {
         public static final int about_info=0x7f06001f;
         public static final int about_info_extra1=0x7f060020;
         public static final int about_info_extra2=0x7f060021;
+        public static final int about_info_extra3=0x7f060022;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -279,7 +287,8 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
-        public static final int cancel_action=0x7f060026;
+        public static final int cancel_action=0x7f060028;
+        public static final int click_to_navigate=0x7f060027;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -351,10 +360,10 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int distance_kilometers=0x7f060024;
-        public static final int distance_meters=0x7f060023;
-        public static final int error_title=0x7f060022;
-        public static final int take_me_to_this_stop=0x7f060025;
+        public static final int distance_kilometers=0x7f060025;
+        public static final int distance_meters=0x7f060024;
+        public static final int error_title=0x7f060023;
+        public static final int take_me_to_this_stop=0x7f060026;
         public static final int title_activity_tariff=0x7f06001b;
         public static final int title_info=0x7f06001e;
         public static final int title_route=0x7f06001d;
