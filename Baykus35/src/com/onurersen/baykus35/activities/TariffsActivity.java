@@ -114,6 +114,12 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		return true;
 	}
 
+	/**
+	 * Fragment to show Tariffs those belong to selected Route
+	 * 
+	 * @author onurersen
+	 * 
+	 */
 	public static class TariffSectionFragment extends Fragment {
 
 		public static final String ARG_SECTION_NUMBER = "section_number";
@@ -132,6 +138,12 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			return rootView;
 		}
 
+		/**
+		 * Populates Tariff ListView with selectedRouteId data
+		 * 
+		 * @param routeId
+		 * @param rootView
+		 */
 		private void configureTariffList(int routeId, View rootView) {
 			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
 			TariffModel.LoadModel(dbHelper, routeId);
@@ -145,6 +157,12 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 	}
 
+	/**
+	 * Fragment to show MapView with BusStop markers
+	 * 
+	 * @author onurersen
+	 * 
+	 */
 	public static class MapSectionFragment extends Fragment implements OnInfoWindowClickListener, OnMarkerClickListener {
 
 		public static final String ARG_SECTION_NUMBER = "section_number";
@@ -161,6 +179,13 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		Marker selectedMarker;
 
+		/**
+		 * Custom Class to hold MarkerData with latitude,longitude,title and
+		 * snippet info
+		 * 
+		 * @author onurersen
+		 * 
+		 */
 		class MarkerData {
 
 			public MarkerData(double lng, double lat, String title, String snippet) {
@@ -240,6 +265,11 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			return rootView;
 		}
 
+		/**
+		 * Method to return last known geo location of the user
+		 * 
+		 * @return
+		 */
 		private Location getLastKnownLocation() {
 			LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 			Criteria crit = new Criteria();
@@ -247,28 +277,12 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			return lm.getLastKnownLocation(lastLocation);
 		}
 
-		public SupportMapFragment getFm() {
-			if (fm == null) {
-				fm = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
-			}
-			return fm;
-		}
-
-		public void setFm(SupportMapFragment fm) {
-			this.fm = fm;
-		}
-
-		public GoogleMap getMap() {
-			if (map == null) {
-				map = getFm().getMap();
-			}
-			return map;
-		}
-
-		public void setMap(GoogleMap map) {
-			this.map = map;
-		}
-
+		/**
+		 * Method selects and populates Bus Stop Marker List
+		 * 
+		 * @param markers
+		 * @param selectedRouteId
+		 */
 		private void fillBusStopMarkers(ArrayList<MarkerData> markers, int selectedRouteId) {
 			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
 			BusStopModel.LoadModel(dbHelper, selectedRouteId);
@@ -318,6 +332,42 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 
 		/**
+		 * @return the fm
+		 */
+		public SupportMapFragment getFm() {
+			if (fm == null) {
+				fm = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
+			}
+			return fm;
+		}
+
+		/**
+		 * @param fm
+		 *            the fm to set
+		 */
+		public void setFm(SupportMapFragment fm) {
+			this.fm = fm;
+		}
+
+		/**
+		 * @return the map
+		 */
+		public GoogleMap getMap() {
+			if (map == null) {
+				map = getFm().getMap();
+			}
+			return map;
+		}
+
+		/**
+		 * @param map
+		 *            the map to set
+		 */
+		public void setMap(GoogleMap map) {
+			this.map = map;
+		}
+
+		/**
 		 * @return the selectedMarker
 		 */
 		public Marker getSelectedMarker() {
@@ -334,6 +384,12 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 	}
 
+	/**
+	 * Fragment to show application info
+	 * 
+	 * @author onurersen
+	 * 
+	 */
 	public static class AboutSectionFragment extends Fragment {
 
 		public static final String ARG_SECTION_NUMBER = "section_number";
@@ -348,10 +404,17 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 	}
 
+	/**
+	 * @return the selectedRouteId
+	 */
 	public int getSelectedRouteId() {
 		return selectedRouteId;
 	}
 
+	/**
+	 * @param selectedRouteId
+	 *            the selectedRouteId to set
+	 */
 	public void setSelectedRouteId(int selectedRouteId) {
 		this.selectedRouteId = selectedRouteId;
 	}

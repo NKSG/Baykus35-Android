@@ -39,7 +39,12 @@ public class SplashActivity extends Activity {
 			SplashActivity.this.finish();
 		}
 	}
-
+	
+	/**
+	 * Launches RoutesActivity from SplashScreen activity
+	 * @author onurersen
+	 *
+	 */
 	private class IntentLauncher extends Thread {
 		@Override
 		public void run() {

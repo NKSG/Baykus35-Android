@@ -34,18 +34,9 @@ public class RoutesActivity extends Activity {
 		assignRouteOnClick();
 	}
 
-	private void assignRouteOnClick() {
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				Intent intent = new Intent(RoutesActivity.this, TariffsActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.putExtra("route", Integer.parseInt(parent.getItemAtPosition(position).toString()));
-				startActivity(intent);
-			}
-		});
-	}
-
+	/**
+	 * Sets Custom Text Font to ActionBar
+	 */
 	private void customizeActionBar() {
 		final ActionBar actionBar = getActionBar();
 		SpannableString s = new SpannableString(getString(R.string.app_name));
@@ -53,6 +44,9 @@ public class RoutesActivity extends Activity {
 		actionBar.setTitle(s);
 	}
 
+	/**
+	 * Populates defined Routes into Listview
+	 */
 	private void configureRouteList() {
 		SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(this);
 		RouteModel.LoadModel(dbHelper);
@@ -63,6 +57,21 @@ public class RoutesActivity extends Activity {
 		}
 		RouteItemAdapter adapter = new RouteItemAdapter(this, R.layout.row_route, ids);
 		listView.setAdapter(adapter);
+	}
+
+	/**
+	 * Starts TariffsActivity to show Tariffs assigned to selected Route
+	 */
+	private void assignRouteOnClick() {
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+				Intent intent = new Intent(RoutesActivity.this, TariffsActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("route", Integer.parseInt(parent.getItemAtPosition(position).toString()));
+				startActivity(intent);
+			}
+		});
 	}
 
 }
