@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:paddingTop="@dimen/row_tariff_layout_padding_top"
+                android:paddingBottom="@dimen/row_tariff_layout_padding_bottom">
     
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/tariffTime1View"

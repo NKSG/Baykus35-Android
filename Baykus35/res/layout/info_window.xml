@@ -11,7 +11,7 @@
         android:paddingLeft="@dimen/info_window_info_image_view_padding_left"
         android:paddingRight="@dimen/info_window_info_image_view_padding_right"
         android:paddingBottom="@dimen/info_window_info_image_view_padding_bottom"
-        android:paddingTop="@dimen/info_window_info_image_view_padding_top"
+        android:layout_marginTop="@dimen/info_window_info_image_view_margin_top"
         android:background="@drawable/img_info_bus"/>
     
     <com.onurersen.baykus35.customization.CustomTextView

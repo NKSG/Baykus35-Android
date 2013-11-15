@@ -3,24 +3,24 @@ Samsung Galaxy Tab 2 7'
  -->
 <resources>
     
-    <dimen name="row_route_layout_padding_top">10dp</dimen>
-	<dimen name="row_route_layout_padding_bottom">10dp</dimen>
+    <dimen name="row_route_layout_padding_top">25dp</dimen>
+	<dimen name="row_route_layout_padding_bottom">25dp</dimen>
 	
     <dimen name="row_route_image_view_layout_width">60dp</dimen>
     <dimen name="row_route_image_view_layout_height">60dp</dimen>
     <dimen name="row_route_image_view_padding_left">5dp</dimen>
     <dimen name="row_route_image_view_padding_right">5dp</dimen>
     <dimen name="row_route_image_view_padding_bottom">2dp</dimen>
-    <dimen name="row_route_image_view_padding_top">2dp</dimen>
+    <dimen name="row_route_image_view_padding_top">6dp</dimen>
     
     <dimen name="row_route_number_view_padding_left">25dp</dimen>
-    <dimen name="row_route_number_view_padding_top">5dp</dimen>
+    <dimen name="row_route_number_view_padding_top">0dp</dimen>
     <dimen name="row_route_number_view_padding_bottom">2dp</dimen>
-    <dimen name="row_route_number_view_text_size">35sp</dimen>
+    <dimen name="row_route_number_view_text_size">30sp</dimen>
     
     <dimen name="row_route_route_view_padding_left">25dp</dimen>
-    <dimen name="row_route_route_view_padding_top">15dp</dimen>
-    <dimen name="row_route_route_view_padding_bottom">4dp</dimen>
+    <dimen name="row_route_route_view_padding_top">5dp</dimen>
+    <dimen name="row_route_route_view_padding_bottom">6dp</dimen>
     <dimen name="row_route_route_view_text_size">20sp</dimen>
     
     <dimen name="row_route_description_view_padding_left">25dp</dimen>
@@ -28,7 +28,10 @@ Samsung Galaxy Tab 2 7'
     <dimen name="row_route_description_view_padding_right">5dp</dimen>
     <dimen name="row_route_description_view_text_size">14sp</dimen>
     
-    <dimen name="row_tariff_tariff_navigator_text_size">15sp</dimen>
+    <dimen name="row_tariff_tariff_navigator_text_size">17sp</dimen>
+    
+    <dimen name="row_tariff_layout_padding_top">10dp</dimen>
+	<dimen name="row_tariff_layout_padding_bottom">10dp</dimen>
     
     <dimen name="row_tariff_tariff_time1_view_padding_left">100dp</dimen>
     <dimen name="row_tariff_tariff_time1_view_padding_right">350dp</dimen>
@@ -51,38 +54,38 @@ Samsung Galaxy Tab 2 7'
     <dimen name="fragment_about_img_view_margin_top">20dp</dimen>
     
     <dimen name="fragment_about_info_view_padding_top">50dp</dimen>
-    <dimen name="fragment_about_info_view_padding_left">5dp</dimen>
-    <dimen name="fragment_about_info_view_text_size">15sp</dimen>
+    <dimen name="fragment_about_info_view_padding_left">10dp</dimen>
+    <dimen name="fragment_about_info_view_text_size">20sp</dimen>
    
     <dimen name="fragment_about_info_extra_1_view_padding_top">25dp</dimen>
-    <dimen name="fragment_about_info_extra_1_view_padding_left">5dp</dimen>
-    <dimen name="fragment_about_info_extra_1_view_text_size">15sp</dimen>
+    <dimen name="fragment_about_info_extra_1_view_padding_left">10dp</dimen>
+    <dimen name="fragment_about_info_extra_1_view_text_size">20sp</dimen>
     
     <dimen name="fragment_about_info_extra_2_view_padding_top">25dp</dimen>
-    <dimen name="fragment_about_info_extra_2_view_padding_left">5dp</dimen>
-    <dimen name="fragment_about_info_extra_2_view_text_size">15sp</dimen>
+    <dimen name="fragment_about_info_extra_2_view_padding_left">10dp</dimen>
+    <dimen name="fragment_about_info_extra_2_view_text_size">20sp</dimen>
     
     <dimen name="fragment_about_info_extra_3_view_padding_top">100dp</dimen>
-    <dimen name="fragment_about_info_extra_3_view_padding_left">5dp</dimen>
-    <dimen name="fragment_about_info_extra_3_view_text_size">15sp</dimen>
+    <dimen name="fragment_about_info_extra_3_view_padding_left">10dp</dimen>
+    <dimen name="fragment_about_info_extra_3_view_text_size">20sp</dimen>
     
-    <dimen name="info_window_info_image_view_layout_width">90dp</dimen>
-    <dimen name="info_window_info_image_view_layout_height">90dp</dimen>
+    <dimen name="info_window_info_image_view_layout_width">60dp</dimen>
+    <dimen name="info_window_info_image_view_layout_height">60dp</dimen>
     <dimen name="info_window_info_image_view_padding_left">5dp</dimen>
     <dimen name="info_window_info_image_view_padding_right">5dp</dimen>
     <dimen name="info_window_info_image_view_padding_bottom">2dp</dimen>
-    <dimen name="info_window_info_image_view_padding_top">2dp</dimen>
+    <dimen name="info_window_info_image_view_margin_top">8dp</dimen>
     
     <dimen name="info_window_bus_stop_title_view_padding_top">4dp</dimen>
     <dimen name="info_window_bus_stop_title_view_padding_left">10dp</dimen>
-    <dimen name="info_window_bus_stop_title_view_text_size">14sp</dimen>
+    <dimen name="info_window_bus_stop_title_view_text_size">18sp</dimen>
     
     <dimen name="info_window_bus_stop_description_view_padding_top">4dp</dimen>
     <dimen name="info_window_bus_stop_description_view_padding_left">10dp</dimen>
-    <dimen name="info_window_bus_stop_description_view_text_size">11sp</dimen>
+    <dimen name="info_window_bus_stop_description_view_text_size">13sp</dimen>
     
     <dimen name="info_window_bus_stop_clicktonavigate_view_padding_top">4dp</dimen>
     <dimen name="info_window_bus_stop_clicktonavigate_view_padding_left">10dp</dimen>
-    <dimen name="info_window_bus_stop_clicktonavigate_view_text_size">11sp</dimen>
+    <dimen name="info_window_bus_stop_clicktonavigate_view_text_size">13sp</dimen>
 
 </resources>
