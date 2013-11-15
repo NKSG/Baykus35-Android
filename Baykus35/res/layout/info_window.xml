@@ -6,12 +6,12 @@
     <ImageView
         android:contentDescription="@string/about_info"
         android:id="@+id/infoImageView"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" 
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp"
+        android:layout_width="@dimen/info_window_info_image_view_layout_width"
+        android:layout_height="@dimen/info_window_info_image_view_layout_height"
+        android:paddingLeft="@dimen/info_window_info_image_view_padding_left"
+        android:paddingRight="@dimen/info_window_info_image_view_padding_right"
+        android:paddingBottom="@dimen/info_window_info_image_view_padding_bottom"
+        android:paddingTop="@dimen/info_window_info_image_view_padding_top"
         android:background="@drawable/img_info_bus"/>
     
     <com.onurersen.baykus35.customization.CustomTextView
@@ -19,8 +19,9 @@
         android:layout_toRightOf="@+id/infoImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:textSize="20sp"
+        android:paddingTop="@dimen/info_window_bus_stop_title_view_padding_top"
+        android:paddingLeft="@dimen/info_window_bus_stop_title_view_padding_left"
+        android:textSize="@dimen/info_window_bus_stop_title_view_text_size"
         android:textColor="#0c3707" />
 
     <com.onurersen.baykus35.customization.CustomTextView
@@ -29,8 +30,9 @@
         android:layout_below="@+id/busStopTitleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:textSize="17sp" />
+        android:paddingTop="@dimen/info_window_bus_stop_description_view_padding_top"
+        android:paddingLeft="@dimen/info_window_bus_stop_description_view_padding_left"
+        android:textSize="@dimen/info_window_bus_stop_description_view_text_size" />
     
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/busStopClickToNavigateView"
@@ -38,8 +40,9 @@
         android:layout_below="@+id/busStopDescriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
         android:text="@string/click_to_navigate"
-        android:textSize="12sp" />
+        android:paddingTop="@dimen/info_window_bus_stop_clicktonavigate_view_padding_top"
+        android:paddingLeft="@dimen/info_window_bus_stop_clicktonavigate_view_padding_left"
+        android:textSize="@dimen/info_window_bus_stop_clicktonavigate_view_text_size" />
 
 </RelativeLayout>

@@ -62,8 +62,27 @@ Samsung Galaxy Tab 2 7'
     <dimen name="fragment_about_info_extra_2_view_padding_left">5dp</dimen>
     <dimen name="fragment_about_info_extra_2_view_text_size">15sp</dimen>
     
-    <dimen name="fragment_about_info_extra_3_view_padding_top">150dp</dimen>
+    <dimen name="fragment_about_info_extra_3_view_padding_top">100dp</dimen>
     <dimen name="fragment_about_info_extra_3_view_padding_left">5dp</dimen>
     <dimen name="fragment_about_info_extra_3_view_text_size">15sp</dimen>
+    
+    <dimen name="info_window_info_image_view_layout_width">90dp</dimen>
+    <dimen name="info_window_info_image_view_layout_height">90dp</dimen>
+    <dimen name="info_window_info_image_view_padding_left">5dp</dimen>
+    <dimen name="info_window_info_image_view_padding_right">5dp</dimen>
+    <dimen name="info_window_info_image_view_padding_bottom">2dp</dimen>
+    <dimen name="info_window_info_image_view_padding_top">2dp</dimen>
+    
+    <dimen name="info_window_bus_stop_title_view_padding_top">4dp</dimen>
+    <dimen name="info_window_bus_stop_title_view_padding_left">10dp</dimen>
+    <dimen name="info_window_bus_stop_title_view_text_size">14sp</dimen>
+    
+    <dimen name="info_window_bus_stop_description_view_padding_top">4dp</dimen>
+    <dimen name="info_window_bus_stop_description_view_padding_left">10dp</dimen>
+    <dimen name="info_window_bus_stop_description_view_text_size">11sp</dimen>
+    
+    <dimen name="info_window_bus_stop_clicktonavigate_view_padding_top">4dp</dimen>
+    <dimen name="info_window_bus_stop_clicktonavigate_view_padding_left">10dp</dimen>
+    <dimen name="info_window_bus_stop_clicktonavigate_view_text_size">11sp</dimen>
 
 </resources>
