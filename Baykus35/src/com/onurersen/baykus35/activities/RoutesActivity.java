@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,6 +16,7 @@ import com.onurersen.baykus35.customization.CustomTypeFaceSpan;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
 import com.onurersen.baykus35.list.route.RouteItemAdapter;
 import com.onurersen.baykus35.list.route.RouteModel;
+import com.onurersen.baykus35.utility.LogCat;
 
 /**
  * 
@@ -38,6 +40,25 @@ public class RoutesActivity extends Activity {
 	 * Sets Custom Text Font to ActionBar
 	 */
 	private void customizeActionBar() {
+		
+		switch (getResources().getDisplayMetrics().densityDpi) {
+		case DisplayMetrics.DENSITY_LOW:
+		    LogCat.INSTANCE.info(this.getClass().getName(), "Screen Size : LDPI");
+		    break;
+		case DisplayMetrics.DENSITY_MEDIUM:
+			LogCat.INSTANCE.info(this.getClass().getName(), "Screen Size : MDPI");
+		    break;
+		case DisplayMetrics.DENSITY_HIGH:
+			LogCat.INSTANCE.info(this.getClass().getName(), "Screen Size : HDPI");
+		    break;
+		case DisplayMetrics.DENSITY_XHIGH:
+			LogCat.INSTANCE.info(this.getClass().getName(), "Screen Size : XDPI");
+		    break;
+		case DisplayMetrics.DENSITY_XXHIGH:
+			LogCat.INSTANCE.info(this.getClass().getName(), "Screen Size : XXDPI");
+		    break;
+		}
+		
 		final ActionBar actionBar = getActionBar();
 		SpannableString s = new SpannableString(getString(R.string.app_name));
 		s.setSpan(new CustomTypeFaceSpan(this, "CustomFont"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-    
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="@dimen/row_route_layout_padding_top"
+    android:paddingBottom="@dimen/row_route_layout_padding_bottom" >
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" 
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp"/>
- 
+        android:layout_width="@dimen/row_route_image_view_layout_width"
+        android:layout_height="@dimen/row_route_image_view_layout_height"
+        android:contentDescription="@string/about_info"
+        android:paddingBottom="@dimen/row_route_image_view_padding_bottom"
+        android:paddingLeft="@dimen/row_route_image_view_padding_left"
+        android:paddingRight="@dimen/row_route_image_view_padding_right"
+        android:paddingTop="@dimen/row_route_image_view_padding_top" />
+
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/numberView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
-        android:paddingTop="5dp"
         android:layout_toRightOf="@+id/imageView"
-        android:paddingBottom="2dp"
+        android:paddingBottom="@dimen/row_route_number_view_padding_bottom"
+        android:paddingLeft="@dimen/row_route_number_view_padding_left"
+        android:paddingTop="@dimen/row_route_number_view_padding_top"
         android:textColor="#000000"
-        android:textSize="35sp" 
-        android:textStyle="bold"/>
-    
+        android:textSize="@dimen/row_route_number_view_text_size"
+        android:textStyle="bold" />
+
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/routeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/numberView"
-        android:paddingLeft="25dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="4dp"
+        android:paddingBottom="@dimen/row_route_route_view_padding_bottom"
+        android:paddingLeft="@dimen/row_route_route_view_padding_left"
+        android:paddingTop="@dimen/row_route_route_view_padding_top"
         android:textColor="#000000"
-        android:textSize="20sp" 
-        android:textStyle="bold"/>
- 
+        android:textSize="@dimen/row_route_route_view_text_size"
+        android:textStyle="bold" />
+
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/descriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/numberView"
         android:layout_toRightOf="@+id/imageView"
-        android:paddingLeft="25dp"
-        android:paddingTop="0dp"
-        android:textColor="#25383C"
-        android:textSize="14sp" />
+        android:paddingLeft="@dimen/row_route_description_view_padding_left"
+        android:paddingTop="@dimen/row_route_description_view_padding_top"
+        android:paddingRight="@dimen/row_route_description_view_padding_right"
+        android:textColor="#999999"
+        android:textSize="@dimen/row_route_description_view_text_size" />
 
 </RelativeLayout>

@@ -7,24 +7,24 @@
         android:id="@+id/tariffTime1View"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="100dp"
-        android:paddingRight="350dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="2dp"
+        android:paddingLeft="@dimen/row_tariff_tariff_time1_view_padding_left"
+        android:paddingRight="@dimen/row_tariff_tariff_time1_view_padding_right"
+        android:paddingTop="@dimen/row_tariff_tariff_time1_view_padding_top"
+        android:paddingBottom="@dimen/row_tariff_tariff_time1_view_padding_bottom"
         android:textColor="#000000"
-        android:textSize="35sp" 
+        android:textSize="@dimen/row_tariff_tariff_time1_view_text_size"
         android:textStyle="bold"/>
     
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/tariffTime2View"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="350dp"
-        android:paddingRight="100dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="2dp"
+        android:paddingLeft="@dimen/row_tariff_tariff_time2_view_padding_left"
+        android:paddingRight="@dimen/row_tariff_tariff_time2_view_padding_right"
+        android:paddingTop="@dimen/row_tariff_tariff_time2_view_padding_top"
+        android:paddingBottom="@dimen/row_tariff_tariff_time2_view_padding_bottom"
         android:textColor="#000000"
-        android:textSize="35sp" 
+        android:textSize="@dimen/row_tariff_tariff_time2_view_text_size"
         android:textStyle="bold"/>
     
     <com.onurersen.baykus35.customization.CustomTextView
@@ -33,9 +33,11 @@
         android:layout_height="fill_parent"
         android:layout_below="@+id/tariffTime1View"
         android:gravity="center"
-        android:paddingTop="0dp"
-        android:paddingBottom="15dp"
-        android:textColor="#25383C"
-        android:textSize="14sp" />
+        android:paddingTop="@dimen/row_tariff_tariff_route_view_padding_top"
+        android:paddingBottom="@dimen/row_tariff_tariff_route_view_padding_bottom"
+        android:paddingLeft="@dimen/row_tariff_tariff_route_view_padding_left"
+        android:paddingRight="@dimen/row_tariff_tariff_route_view_padding_right"
+        android:textColor="#999999"
+        android:textSize="@dimen/row_tariff_tariff_route_view_text_size" />
 
 </RelativeLayout>

@@ -10,7 +10,7 @@
     tools:context=".TariffsActivity" >
 
     <ImageView
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="@dimen/fragment_about_img_view_margin_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -22,39 +22,39 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/about_info"
-        android:layout_width="500dp"
-        android:paddingTop="50dp"
-        android:paddingLeft="5dp"
-        android:textSize="20sp" />
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/fragment_about_info_view_padding_top"
+        android:paddingLeft="@dimen/fragment_about_info_view_padding_left"
+        android:textSize="@dimen/fragment_about_info_view_text_size" />
 
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/aboutInfoExtra1"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/about_info_extra1"
-        android:layout_width="500dp"
-        android:paddingTop="25dp"
-        android:paddingLeft="5dp"
-        android:textSize="20sp" />
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/fragment_about_info_extra_1_view_padding_top"
+        android:paddingLeft="@dimen/fragment_about_info_extra_1_view_padding_left"
+        android:textSize="@dimen/fragment_about_info_extra_1_view_text_size" />
 
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/aboutInfoExtra2"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/about_info_extra2"
-        android:layout_width="500dp"
-        android:paddingTop="25dp"
-        android:paddingLeft="5dp"
-        android:textSize="20sp" />
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/fragment_about_info_extra_2_view_padding_top"
+        android:paddingLeft="@dimen/fragment_about_info_extra_2_view_padding_left"
+        android:textSize="@dimen/fragment_about_info_extra_2_view_text_size" />
     
     <com.onurersen.baykus35.customization.CustomTextView
         android:id="@+id/aboutInfoExtra3"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/about_info_extra3"
-        android:layout_width="500dp"
-        android:paddingTop="150dp"
-        android:paddingLeft="5dp"
-        android:textSize="20sp" />
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/fragment_about_info_extra_3_view_padding_top"
+        android:paddingLeft="@dimen/fragment_about_info_extra_3_view_padding_left"
+        android:textSize="@dimen/fragment_about_info_extra_3_view_text_size" />
 
 </LinearLayout>
