@@ -6,8 +6,8 @@ Samsung Galaxy Tab 2 7'
     <dimen name="row_route_layout_padding_top">10dp</dimen>
 	<dimen name="row_route_layout_padding_bottom">10dp</dimen>
 	
-    <dimen name="row_route_image_view_layout_width">90dp</dimen>
-    <dimen name="row_route_image_view_layout_height">90dp</dimen>
+    <dimen name="row_route_image_view_layout_width">60dp</dimen>
+    <dimen name="row_route_image_view_layout_height">60dp</dimen>
     <dimen name="row_route_image_view_padding_left">5dp</dimen>
     <dimen name="row_route_image_view_padding_right">5dp</dimen>
     <dimen name="row_route_image_view_padding_bottom">2dp</dimen>

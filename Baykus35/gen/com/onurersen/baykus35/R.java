@@ -313,6 +313,7 @@ containing a value of this type.
         public static final int img_busstop=0x7f020020;
         public static final int img_info_bus=0x7f020021;
         public static final int img_splash=0x7f020022;
+        public static final int img_splash1=0x7f020023;
     }
     public static final class id {
         public static final int aboutInfoExtra1=0x7f050009;
