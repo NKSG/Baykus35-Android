@@ -30,6 +30,11 @@ Samsung Galaxy Tab 2 7'
     
     <dimen name="row_tariff_tariff_navigator_text_size">17sp</dimen>
     
+    <dimen name="fragment_tariff_first_stop_start_view_padding_left">90dp</dimen>
+    <dimen name="fragment_tariff_first_stop_start_view_text_size">20sp</dimen>
+    <dimen name="fragment_tariff_last_stop_start_view_padding_left">115dp</dimen>
+    <dimen name="fragment_tariff_last_stop_start_view_text_size">20sp</dimen>
+    
     <dimen name="row_tariff_layout_padding_top">10dp</dimen>
 	<dimen name="row_tariff_layout_padding_bottom">10dp</dimen>
     

@@ -23,13 +23,14 @@ public class RouteModel {
 		int routeIndex = 1;
 		for (ClsRoutes clsRoutes : routes) {
 			Items.add(new RouteItem(routeIndex++, clsRoutes.getRouteId(), String.valueOf(clsRoutes.getRouteNumber()),
-					clsRoutes.getRouteName(), clsRoutes.getRouteDescription()));
+					clsRoutes.getRouteName(), clsRoutes.getRouteDescription(), clsRoutes.getFirstStopName(), clsRoutes
+							.getLastStopName()));
 		}
 	}
 
 	public static RouteItem GetbyId(int id) {
 		for (RouteItem item : Items) {
-			if (item.index == id) {
+			if (item.getIndex() == id) {
 				return item;
 			}
 		}

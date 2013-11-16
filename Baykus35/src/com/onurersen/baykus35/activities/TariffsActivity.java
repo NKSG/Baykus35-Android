@@ -39,6 +39,8 @@ import com.onurersen.baykus35.busstop.BusStopModel;
 import com.onurersen.baykus35.customization.CustomArrayAdapter;
 import com.onurersen.baykus35.db.data.ClsBusStops;
 import com.onurersen.baykus35.db.sql.SQLiteDatabaseHelper;
+import com.onurersen.baykus35.list.route.RouteItem;
+import com.onurersen.baykus35.list.route.RouteModel;
 import com.onurersen.baykus35.list.tariff.TariffItemAdapter;
 import com.onurersen.baykus35.list.tariff.TariffModel;
 import com.onurersen.baykus35.utility.LogCat;
@@ -147,6 +149,11 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		private void configureTariffList(int routeId, View rootView) {
 			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
 			TariffModel.LoadModel(dbHelper, routeId);
+			RouteItem route = RouteModel.GetbyId(routeId);
+			TextView firstStopStart = (TextView) rootView.findViewById(R.id.firstStopStartView);
+			TextView lastStopStart = (TextView) rootView.findViewById(R.id.lastStopStartView);
+			firstStopStart.setText(getActivity().getString(R.string.tariff_stop, route.getFirstStopName()));
+			lastStopStart.setText(getActivity().getString(R.string.tariff_stop, route.getLastStopName()));
 			listView = (ListView) rootView.findViewById(R.id.listView);
 			String[] ids = new String[TariffModel.Items.size()];
 			for (int i = 0; i < ids.length; i++) {

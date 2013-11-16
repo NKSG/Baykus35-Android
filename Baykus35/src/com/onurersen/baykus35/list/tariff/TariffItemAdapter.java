@@ -38,9 +38,9 @@ public class TariffItemAdapter extends ArrayAdapter<String> {
 		TextView tariffRoute = (TextView) rowView.findViewById(R.id.tariffRouteView);
 
 		int id = Integer.parseInt(Ids[position]);
-		tariffTime1.setText(TariffModel.GetbyId(id).Time1);
-		tariffTime2.setText(TariffModel.GetbyId(id).Time2);
-		tariffRoute.setText(TariffModel.GetbyId(id).Route);
+		tariffTime1.setText(TariffModel.GetbyId(id).getTime1());
+		tariffTime2.setText(TariffModel.GetbyId(id).getTime2());
+		tariffRoute.setText(TariffModel.GetbyId(id).getRoute());
 
 		return rowView;
 

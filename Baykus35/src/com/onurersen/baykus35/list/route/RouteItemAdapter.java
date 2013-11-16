@@ -44,9 +44,9 @@ public class RouteItemAdapter extends ArrayAdapter<String> {
 		TextView descriptionView = (TextView) rowView.findViewById(R.id.descriptionView);
 
 		int id = Integer.parseInt(Ids[position]);
-		numberView.setText(RouteModel.GetbyId(id).Number);
-		routeView.setText(RouteModel.GetbyId(id).Route);
-		descriptionView.setText(RouteModel.GetbyId(id).Description);
+		numberView.setText(RouteModel.GetbyId(id).getNumber());
+		routeView.setText(RouteModel.GetbyId(id).getRoute());
+		descriptionView.setText(RouteModel.GetbyId(id).getDescription());
 
 		return rowView;
 

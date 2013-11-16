@@ -33,7 +33,7 @@ public class TariffModel {
 
 	public static TariffItem GetbyId(int id) {
 		for (TariffItem item : Items) {
-			if (item.index == id) {
+			if (item.getIndex() == id) {
 				return item;
 			}
 		}
