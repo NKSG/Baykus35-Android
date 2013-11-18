@@ -49,7 +49,7 @@ public class SplashActivity extends Activity {
 		@Override
 		public void run() {
 			try {
-				Thread.sleep(SLEEP_TIME * 500);
+				Thread.sleep(SLEEP_TIME * 1000);
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage());
 			}
