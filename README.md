@@ -9,4 +9,26 @@ You can choose a route from 5 alternatives and check your location and
  
  In addition to that you can select and start navigation to any bus stop you desire to go.
  
- ![alt tag](https://dl.dropboxusercontent.com/u/61171723/Image/Baykus35-Android/1.png)
+ <table>
+ <tr>
+ <td>
+ 		![alt tag](https://dl.dropboxusercontent.com/u/61171723/Image/Baykus35-Android/1.png)
+ </td>
+ <td>
+ 		![alt tag](https://dl.dropboxusercontent.com/u/61171723/Image/Baykus35-Android/2.png)
+ </td>
+ </tr>
+  <tr>
+ <td>
+ 		![alt tag](https://dl.dropboxusercontent.com/u/61171723/Image/Baykus35-Android/3.png)
+ </td>
+ <td>
+ 		![alt tag](https://dl.dropboxusercontent.com/u/61171723/Image/Baykus35-Android/4.png)
+ </td>
+ </tr>
+ </table>
+ 
+  
+
+  
+
