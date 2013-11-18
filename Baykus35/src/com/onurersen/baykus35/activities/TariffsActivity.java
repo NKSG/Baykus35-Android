@@ -307,6 +307,7 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 					markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
 							.getStopName(), getActivity().getString(R.string.distance_meters, distance)));
 				}
+				
 			}
 		}
 
@@ -315,7 +316,7 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			super.onCreateContextMenu(menu, v, menuInfo);
 			menu.setHeaderTitle(getSelectedMarker().getTitle());
 			menu.add(0, v.getId(), 0,
-					getActivity().getString(R.string.take_me_to_this_stop, getSelectedMarker().getTitle()));
+					getActivity().getString(R.string.take_me_to_this_stop));
 		}
 
 		@Override

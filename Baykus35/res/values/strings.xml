@@ -20,7 +20,7 @@
     <string name="error_title">Uyarı</string>
     <string name="distance_meters">Bu durağa yaklaşık %.2f metre uzaklıktasınız.</string>
     <string name="distance_kilometers">Bu durağa yaklaşık %.2f kilometre uzaklıktasınız.</string>
-    <string name="take_me_to_this_stop">Beni %s durağına götür!</string>
+    <string name="take_me_to_this_stop">Beni bu durağa götür!</string>
     <string name="click_to_navigate">Bu durağa navigasyon başlatmak için tıklayın.</string>
     <string name="cancel_action">Vazgeç</string>
 
