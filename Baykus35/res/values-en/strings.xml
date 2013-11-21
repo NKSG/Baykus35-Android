@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Baykus35</string>
+    <string name="title_tariff">Timetable</string>
+    <string name="title_route">Route</string>
+    <string name="title_info">Info</string>
+    <string name="tariff_stop">%s \ndeparture</string>
+    <string name="about_info">Baykus35 is a tiny app that shows night bus timetable information 
+        and bus stop locations with respect to 
+     accurate information provided by ESHOT General Directorate / Izmir.Timetable information can also be reached
+     using ESHOT official website, www.eshot.gov.tr.</string>
+    <string name="about_info_extra1">*Bus stops shown on the map are located due to their approximate locations.</string>
+    <string name="about_info_extra2">*Distance information is calculated considering user\'s air distance to that bus stop.</string>
+    <string name="about_info_extra3">For your any proposals and suggestions even your complains please do not hesitate to get in touch.
+        You can contact using baykusotuzbes@gmail.com email address.</string>
+    <string name="network_unavailable">You need active internet connection to locate bus stops on the map correctly.</string>
+    <string name="error_title">Warning</string>
+    <string name="distance_meters">Your approximate distance to this bus stop is %.2f meters.</string>
+    <string name="distance_kilometers">Your approximate distance to this bus stop is %.2f kilometres.</string>
+    <string name="take_me_to_this_stop">Take me to this bus stop!</string>
+    <string name="click_to_navigate">Please click to start navigation to this bus stop.</string>
+    <string name="cancel_action">Cancel</string>
+
+</resources>
