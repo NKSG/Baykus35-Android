@@ -33,7 +33,6 @@
 			</intent-filter>
 		</activity>
 		<activity android:name="com.onurersen.baykus35.activities.TariffsActivity"
-			android:label="@string/title_activity_tariff"
 			android:screenOrientation="portrait">
 		</activity>
 	</application>

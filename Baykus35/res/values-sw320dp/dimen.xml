@@ -30,7 +30,7 @@ Sony Ericsson Xperia Arc LT15i
     
     <dimen name="row_tariff_tariff_navigator_text_size">15sp</dimen>
     
-    <dimen name="fragment_tariff_first_stop_start_view_padding_left">20dp</dimen>
+    <dimen name="fragment_tariff_first_stop_start_view_padding_left">40dp</dimen>
     <dimen name="fragment_tariff_first_stop_start_view_text_size">15sp</dimen>
     <dimen name="fragment_tariff_last_stop_start_view_padding_left">65dp</dimen>
     <dimen name="fragment_tariff_last_stop_start_view_text_size">15sp</dimen>

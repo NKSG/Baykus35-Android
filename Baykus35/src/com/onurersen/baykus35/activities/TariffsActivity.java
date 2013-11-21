@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -227,6 +230,11 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 				LogCat.INSTANCE.error(this.getClass().getName(), exception.getMessage());
 			}
 
+			if (!isNetworkAvailable()) {
+				Toast.makeText(getActivity(), getActivity().getText(R.string.network_unavailable), Toast.LENGTH_LONG)
+						.show();
+			}
+
 			fillBusStopMarkers(markers, routeId);
 
 			for (MarkerData d : markers) {
@@ -273,6 +281,18 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 
 		/**
+		 * Method checks if internet connection is available or not
+		 * 
+		 * @return
+		 */
+		private boolean isNetworkAvailable() {
+			ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(
+					Context.CONNECTIVITY_SERVICE);
+			NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+			return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+		}
+
+		/**
 		 * Method to return last known geo location of the user
 		 * 
 		 * @return
@@ -307,7 +327,7 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 					markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
 							.getStopName(), getActivity().getString(R.string.distance_meters, distance)));
 				}
-				
+
 			}
 		}
 
@@ -315,8 +335,7 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 			super.onCreateContextMenu(menu, v, menuInfo);
 			menu.setHeaderTitle(getSelectedMarker().getTitle());
-			menu.add(0, v.getId(), 0,
-					getActivity().getString(R.string.take_me_to_this_stop));
+			menu.add(0, v.getId(), 0, getActivity().getString(R.string.take_me_to_this_stop));
 		}
 
 		@Override

@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Baykus35</string>
-    <string name="title_activity_tariff">TariffActivity</string>
     <string name="title_tariff">Tarife Bilgisi</string>
     <string name="title_route">Güzergah</string>
     <string name="title_info">Bilgi</string>
@@ -17,6 +16,7 @@
 	    olan uzaklıklar kuş uçuşu hesaplanmaktadır.</string>
     <string name="about_info_extra3">Uygulama ile ilgili her türlü şikayet 
         ve önerilerinizi baykusotuzbes@gmail.com adresine gönderebilirsiniz.</string>
+    <string name="network_unavailable">Harita özelliğini doğru ve verimli kullanabilmeniz için internet bağlantınızın bulunması gerekmektedir.</string>
     <string name="error_title">Uyarı</string>
     <string name="distance_meters">Bu durağa yaklaşık %.2f metre uzaklıktasınız.</string>
     <string name="distance_kilometers">Bu durağa yaklaşık %.2f kilometre uzaklıktasınız.</string>

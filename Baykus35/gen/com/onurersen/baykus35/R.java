@@ -327,10 +327,10 @@ containing a value of this type.
         public static final int splash=0x7f03000a;
     }
     public static final class string {
-        public static final int about_info=0x7f060020;
-        public static final int about_info_extra1=0x7f060021;
-        public static final int about_info_extra2=0x7f060022;
-        public static final int about_info_extra3=0x7f060023;
+        public static final int about_info=0x7f06001f;
+        public static final int about_info_extra1=0x7f060020;
+        public static final int about_info_extra2=0x7f060021;
+        public static final int about_info_extra3=0x7f060022;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
@@ -431,12 +431,12 @@ containing a value of this type.
         public static final int distance_kilometers=0x7f060026;
         public static final int distance_meters=0x7f060025;
         public static final int error_title=0x7f060024;
+        public static final int network_unavailable=0x7f060023;
         public static final int take_me_to_this_stop=0x7f060027;
-        public static final int tariff_stop=0x7f06001f;
-        public static final int title_activity_tariff=0x7f06001b;
-        public static final int title_info=0x7f06001e;
-        public static final int title_route=0x7f06001d;
-        public static final int title_tariff=0x7f06001c;
+        public static final int tariff_stop=0x7f06001e;
+        public static final int title_info=0x7f06001d;
+        public static final int title_route=0x7f06001c;
+        public static final int title_tariff=0x7f06001b;
     }
     public static final class style {
         public static final int ActionBar=0x7f090002;
