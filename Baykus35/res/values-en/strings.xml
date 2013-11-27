@@ -21,5 +21,7 @@
     <string name="take_me_to_this_stop">Take me to this bus stop!</string>
     <string name="click_to_navigate">Please click to start navigation to this bus stop.</string>
     <string name="cancel_action">Cancel</string>
+    <string name="enable_gps_text">GPS is disabled in your device. Would you like to enable it?</string>
+    <string name="go_to_gps_settings">Goto Settings Page To Enable GPS</string>
 
 </resources>

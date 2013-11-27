@@ -23,5 +23,7 @@
     <string name="take_me_to_this_stop">Beni bu durağa götür!</string>
     <string name="click_to_navigate">Bu durağa navigasyon başlatmak için tıklayın.</string>
     <string name="cancel_action">Vazgeç</string>
+    <string name="enable_gps_text">Cihazınızda GPS özelliği kapalı. Şu an bunu açmak ister misiniz?</string>
+    <string name="go_to_gps_settings">GPS Ayar Ekranına Git</string>
 
 </resources>

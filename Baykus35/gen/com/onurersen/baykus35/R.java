@@ -430,7 +430,9 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f060013;
         public static final int distance_kilometers=0x7f060026;
         public static final int distance_meters=0x7f060025;
+        public static final int enable_gps_text=0x7f06002a;
         public static final int error_title=0x7f060024;
+        public static final int go_to_gps_settings=0x7f06002b;
         public static final int network_unavailable=0x7f060023;
         public static final int take_me_to_this_stop=0x7f060027;
         public static final int tariff_stop=0x7f06001e;
