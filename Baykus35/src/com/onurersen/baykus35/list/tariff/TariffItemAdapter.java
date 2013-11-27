@@ -41,7 +41,8 @@ public class TariffItemAdapter extends ArrayAdapter<String> {
 		tariffTime1.setText(TariffModel.GetbyId(id).getTime1());
 		tariffTime2.setText(TariffModel.GetbyId(id).getTime2());
 		tariffRoute.setText(TariffModel.GetbyId(id).getRoute());
-
+		rowView.setEnabled(false);
+		rowView.setOnClickListener(null);
 		return rowView;
 
 	}
