@@ -190,6 +190,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		Marker selectedMarker;
 
+		int selectedRouteId;
+
 		/**
 		 * Custom Class to hold MarkerData with latitude,longitude,title and
 		 * snippet info
@@ -219,7 +221,7 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			int routeId = getArguments().getInt(ARG_SELECTED_ROUTE_ID);
+			setSelectedRouteId(getArguments().getInt(ARG_SELECTED_ROUTE_ID));
 			if (rootView != null) {
 				ViewGroup parent = (ViewGroup) rootView.getParent();
 				if (parent != null)
@@ -236,55 +238,68 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 				getActivity().getSupportFragmentManager().popBackStack();
 				showGPSDisabledAlertToUser();
 			} else {
-
-				if (!isNetworkAvailable()) {
-					Toast.makeText(getActivity(), getActivity().getText(R.string.network_unavailable),
-							Toast.LENGTH_LONG).show();
-				}
-
-				fillBusStopMarkers(markers, routeId);
-
-				for (MarkerData d : markers) {
-					LatLng location = new LatLng(d.lat, d.lng);
-					getMap().addMarker(
-							new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.img_busstop))
-									.position(location).title(d.title).snippet(d.snippet));
-				}
-
-				UiSettings settings = getMap().getUiSettings();
-				settings.setAllGesturesEnabled(true);
-				settings.setZoomControlsEnabled(false);
-
-				getMap().setIndoorEnabled(true);
-				getMap().setBuildingsEnabled(true);
-				getMap().setOnInfoWindowClickListener(this);
-				getMap().setOnMarkerClickListener(this);
-				getMap().setTrafficEnabled(true);
-				getMap().setMyLocationEnabled(true);
-				getMap().moveCamera(CameraUpdateFactory.zoomTo(14));
-				getMap().animateCamera(
-						CameraUpdateFactory.newLatLng(new LatLng(markers.get(0).lat, markers.get(0).lng)), 1750, null);
-
-				getMap().setInfoWindowAdapter(new InfoWindowAdapter() {
-					@Override
-					public View getInfoWindow(Marker marker) {
-						return null;
-					}
-
-					@Override
-					public View getInfoContents(Marker marker) {
-						View v = getActivity().getLayoutInflater().inflate(R.layout.info_window, null);
-						TextView tvLat = (TextView) v.findViewById(R.id.busStopTitleView);
-						TextView tvLng = (TextView) v.findViewById(R.id.busStopDescriptionView);
-						tvLat.setText(marker.getTitle());
-						tvLng.setText(marker.getSnippet());
-						return v;
-					}
-				});
-				registerForContextMenu(rootView);
+				populateMap();
 			}
 
 			return rootView;
+		}
+
+		private void populateMap() {
+			if (!isNetworkAvailable()) {
+				Toast.makeText(getActivity(), getActivity().getText(R.string.network_unavailable), Toast.LENGTH_LONG)
+						.show();
+			}
+			fillBusStopMarkers(markers, getSelectedRouteId());
+
+			for (MarkerData d : markers) {
+				LatLng location = new LatLng(d.lat, d.lng);
+				getMap().addMarker(
+						new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.img_busstop))
+								.position(location).title(d.title).snippet(d.snippet));
+			}
+
+			UiSettings settings = getMap().getUiSettings();
+			settings.setAllGesturesEnabled(true);
+			settings.setZoomControlsEnabled(false);
+
+			getMap().setIndoorEnabled(true);
+			getMap().setBuildingsEnabled(true);
+			getMap().setOnInfoWindowClickListener(this);
+			getMap().setOnMarkerClickListener(this);
+			getMap().setTrafficEnabled(true);
+			getMap().setMyLocationEnabled(true);
+			getMap().moveCamera(CameraUpdateFactory.zoomTo(14));
+			getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng(markers.get(0).lat, markers.get(0).lng)),
+					1750, null);
+
+			getMap().setInfoWindowAdapter(new InfoWindowAdapter() {
+				@Override
+				public View getInfoWindow(Marker marker) {
+					return null;
+				}
+
+				@Override
+				public View getInfoContents(Marker marker) {
+					View v = getActivity().getLayoutInflater().inflate(R.layout.info_window, null);
+					TextView tvLat = (TextView) v.findViewById(R.id.busStopTitleView);
+					TextView tvLng = (TextView) v.findViewById(R.id.busStopDescriptionView);
+					tvLat.setText(marker.getTitle());
+					tvLng.setText(marker.getSnippet());
+					return v;
+				}
+			});
+			registerForContextMenu(rootView);
+		}
+
+		@Override
+		public void onActivityResult(int requestCode, int resultCode, Intent data) {
+			super.onActivityResult(requestCode, resultCode, data);
+			LocationManager locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+			if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+				populateMap();
+			} else {
+				showGPSDisabledAlertToUser();
+			}
 		}
 
 		/**
@@ -329,13 +344,13 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 								public void onClick(DialogInterface dialog, int id) {
 									Intent callGPSSettingIntent = new Intent(
 											android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-									startActivity(callGPSSettingIntent);
+									startActivityForResult(callGPSSettingIntent, 1);
 								}
 							});
 			alertDialogBuilder.setNegativeButton(getActivity().getString(R.string.cancel_action),
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							dialog.cancel();
+							getMap().clear();
 						}
 					});
 			AlertDialog alert = alertDialogBuilder.create();
@@ -445,6 +460,21 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 */
 		public void setSelectedMarker(Marker selectedMarker) {
 			this.selectedMarker = selectedMarker;
+		}
+
+		/**
+		 * @return the selectedRouteId
+		 */
+		public int getSelectedRouteId() {
+			return selectedRouteId;
+		}
+
+		/**
+		 * @param selectedRouteId
+		 *            the selectedRouteId to set
+		 */
+		public void setSelectedRouteId(int selectedRouteId) {
+			this.selectedRouteId = selectedRouteId;
 		}
 
 	}
