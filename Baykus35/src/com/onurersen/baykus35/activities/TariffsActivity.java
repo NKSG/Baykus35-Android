@@ -47,6 +47,7 @@ import com.onurersen.baykus35.list.route.RouteItem;
 import com.onurersen.baykus35.list.route.RouteModel;
 import com.onurersen.baykus35.list.tariff.TariffItemAdapter;
 import com.onurersen.baykus35.list.tariff.TariffModel;
+import com.onurersen.baykus35.utility.GPSTracker;
 import com.onurersen.baykus35.utility.LogCat;
 
 /**
@@ -54,7 +55,8 @@ import com.onurersen.baykus35.utility.LogCat;
  * @author onurersen
  * 
  */
-public class TariffsActivity extends FragmentActivity implements ActionBar.OnNavigationListener {
+public class TariffsActivity extends FragmentActivity implements
+		ActionBar.OnNavigationListener {
 
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 	private int selectedRouteId = -1;
@@ -75,22 +77,27 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
-		ArrayAdapter<String> adapter = new CustomArrayAdapter(this, actionBar.getThemedContext(),
-				android.R.layout.simple_list_item_1, new String[] { getString(R.string.title_tariff),
-						getString(R.string.title_route), getString(R.string.title_info), });
+		ArrayAdapter<String> adapter = new CustomArrayAdapter(this,
+				actionBar.getThemedContext(),
+				android.R.layout.simple_list_item_1, new String[] {
+						getString(R.string.title_tariff),
+						getString(R.string.title_route),
+						getString(R.string.title_info), });
 		actionBar.setListNavigationCallbacks(adapter, this);
 	}
 
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
 		if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
-			getActionBar().setSelectedNavigationItem(savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
+			getActionBar().setSelectedNavigationItem(
+					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
 		}
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
-		outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar().getSelectedNavigationIndex());
+		outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar()
+				.getSelectedNavigationIndex());
 	}
 
 	@Override
@@ -99,23 +106,28 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			Fragment fragment = new TariffSectionFragment();
 			Bundle args = new Bundle();
 			args.putInt(TariffSectionFragment.ARG_SECTION_NUMBER, position + 1);
-			args.putInt(TariffSectionFragment.ARG_SELECTED_ROUTE_ID, getSelectedRouteId());
+			args.putInt(TariffSectionFragment.ARG_SELECTED_ROUTE_ID,
+					getSelectedRouteId());
 			fragment.setArguments(args);
-			getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.container, fragment).commit();
 		} else if (position == DROPDOWN_INDEX_MAP) {
 			Fragment fragment = new MapSectionFragment();
 			Bundle args = new Bundle();
 			args.putInt(TariffSectionFragment.ARG_SECTION_NUMBER, position + 1);
-			args.putInt(TariffSectionFragment.ARG_SELECTED_ROUTE_ID, getSelectedRouteId());
+			args.putInt(TariffSectionFragment.ARG_SELECTED_ROUTE_ID,
+					getSelectedRouteId());
 			fragment.setArguments(args);
-			getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.container, fragment).commit();
 		} else if (position == DROPDOWN_INDEX_ABOUT) {
 			Fragment fragment = new AboutSectionFragment();
 			Bundle args = new Bundle();
 			args.putInt(TariffSectionFragment.ARG_SECTION_NUMBER, position + 1);
 
 			fragment.setArguments(args);
-			getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.container, fragment).commit();
 		}
 		return true;
 	}
@@ -137,8 +149,10 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_tariff, container, false);
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_tariff,
+					container, false);
 			int routeId = getArguments().getInt(ARG_SELECTED_ROUTE_ID);
 			configureTariffList(routeId, rootView);
 			return rootView;
@@ -151,19 +165,25 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 * @param rootView
 		 */
 		private void configureTariffList(int routeId, View rootView) {
-			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
+			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(
+					getActivity());
 			TariffModel.LoadModel(dbHelper, routeId);
 			RouteItem route = RouteModel.GetbyId(routeId);
-			TextView firstStopStart = (TextView) rootView.findViewById(R.id.firstStopStartView);
-			TextView lastStopStart = (TextView) rootView.findViewById(R.id.lastStopStartView);
-			firstStopStart.setText(getActivity().getString(R.string.tariff_stop, route.getFirstStopName()));
-			lastStopStart.setText(getActivity().getString(R.string.tariff_stop, route.getLastStopName()));
+			TextView firstStopStart = (TextView) rootView
+					.findViewById(R.id.firstStopStartView);
+			TextView lastStopStart = (TextView) rootView
+					.findViewById(R.id.lastStopStartView);
+			firstStopStart.setText(getActivity().getString(
+					R.string.tariff_stop, route.getFirstStopName()));
+			lastStopStart.setText(getActivity().getString(R.string.tariff_stop,
+					route.getLastStopName()));
 			listView = (ListView) rootView.findViewById(R.id.listView);
 			String[] ids = new String[TariffModel.Items.size()];
 			for (int i = 0; i < ids.length; i++) {
 				ids[i] = Integer.toString(i + 1);
 			}
-			TariffItemAdapter adapter = new TariffItemAdapter(getActivity(), R.layout.row_tariff, ids);
+			TariffItemAdapter adapter = new TariffItemAdapter(getActivity(),
+					R.layout.row_tariff, ids);
 			listView.setAdapter(adapter);
 		}
 	}
@@ -174,7 +194,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 	 * @author onurersen
 	 * 
 	 */
-	public static class MapSectionFragment extends Fragment implements OnInfoWindowClickListener, OnMarkerClickListener {
+	public static class MapSectionFragment extends Fragment implements
+			OnInfoWindowClickListener, OnMarkerClickListener {
 
 		public static final String ARG_SECTION_NUMBER = "section_number";
 		public static final String ARG_SELECTED_ROUTE_ID = "route";
@@ -201,7 +222,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 */
 		class MarkerData {
 
-			public MarkerData(double lng, double lat, String title, String snippet) {
+			public MarkerData(double lng, double lat, String title,
+					String snippet) {
 				super();
 				this.lat = (double) lat;
 				this.lng = (double) lng;
@@ -220,7 +242,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
 			setSelectedRouteId(getArguments().getInt(ARG_SELECTED_ROUTE_ID));
 			if (rootView != null) {
 				ViewGroup parent = (ViewGroup) rootView.getParent();
@@ -228,13 +251,17 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 					parent.removeView(rootView);
 			}
 			try {
-				rootView = inflater.inflate(R.layout.fragment_map, container, false);
+				rootView = inflater.inflate(R.layout.fragment_map, container,
+						false);
 			} catch (Exception exception) {
-				LogCat.INSTANCE.error(this.getClass().getName(), exception.getMessage());
+				LogCat.INSTANCE.error(this.getClass().getName(),
+						exception.getMessage());
 			}
 
-			LocationManager locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
-			if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+			LocationManager locationManager = (LocationManager) getActivity()
+					.getSystemService(LOCATION_SERVICE);
+			if (!locationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 				getActivity().getSupportFragmentManager().popBackStack();
 				showGPSDisabledAlertToUser();
 			} else {
@@ -246,16 +273,20 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		private void populateMap() {
 			if (!isNetworkAvailable()) {
-				Toast.makeText(getActivity(), getActivity().getText(R.string.network_unavailable), Toast.LENGTH_LONG)
-						.show();
+				Toast.makeText(getActivity(),
+						getActivity().getText(R.string.network_unavailable),
+						Toast.LENGTH_LONG).show();
 			}
 			fillBusStopMarkers(markers, getSelectedRouteId());
 
 			for (MarkerData d : markers) {
 				LatLng location = new LatLng(d.lat, d.lng);
 				getMap().addMarker(
-						new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.img_busstop))
-								.position(location).title(d.title).snippet(d.snippet));
+						new MarkerOptions()
+								.icon(BitmapDescriptorFactory
+										.fromResource(R.drawable.img_busstop))
+								.position(location).title(d.title)
+								.snippet(d.snippet));
 			}
 
 			UiSettings settings = getMap().getUiSettings();
@@ -269,8 +300,10 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 			getMap().setTrafficEnabled(true);
 			getMap().setMyLocationEnabled(true);
 			getMap().moveCamera(CameraUpdateFactory.zoomTo(14));
-			getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng(markers.get(0).lat, markers.get(0).lng)),
-					1750, null);
+			getMap().animateCamera(
+					CameraUpdateFactory.newLatLng(new LatLng(
+							markers.get(0).lat, markers.get(0).lng)), 1750,
+					null);
 
 			getMap().setInfoWindowAdapter(new InfoWindowAdapter() {
 				@Override
@@ -280,9 +313,12 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 				@Override
 				public View getInfoContents(Marker marker) {
-					View v = getActivity().getLayoutInflater().inflate(R.layout.info_window, null);
-					TextView tvLat = (TextView) v.findViewById(R.id.busStopTitleView);
-					TextView tvLng = (TextView) v.findViewById(R.id.busStopDescriptionView);
+					View v = getActivity().getLayoutInflater().inflate(
+							R.layout.info_window, null);
+					TextView tvLat = (TextView) v
+							.findViewById(R.id.busStopTitleView);
+					TextView tvLng = (TextView) v
+							.findViewById(R.id.busStopDescriptionView);
 					tvLat.setText(marker.getTitle());
 					tvLng.setText(marker.getSnippet());
 					return v;
@@ -292,9 +328,11 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 
 		@Override
-		public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		public void onActivityResult(int requestCode, int resultCode,
+				Intent data) {
 			super.onActivityResult(requestCode, resultCode, data);
-			LocationManager locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+			LocationManager locationManager = (LocationManager) getActivity()
+					.getSystemService(LOCATION_SERVICE);
 			if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 				populateMap();
 			} else {
@@ -308,9 +346,10 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 * @return
 		 */
 		private boolean isNetworkAvailable() {
-			ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(
-					Context.CONNECTIVITY_SERVICE);
-			NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+			ConnectivityManager connectivityManager = (ConnectivityManager) getActivity()
+					.getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo activeNetworkInfo = connectivityManager
+					.getActiveNetworkInfo();
 			return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 		}
 
@@ -320,7 +359,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 * @return
 		 */
 		private Location getLastKnownLocation() {
-			LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+			LocationManager lm = (LocationManager) getActivity()
+					.getSystemService(Context.LOCATION_SERVICE);
 			List<String> providers = lm.getProviders(true);
 			Location location = null;
 			for (int i = providers.size() - 1; i >= 0; i--) {
@@ -335,19 +375,26 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 * Method to alert user about status of GPS Service on device
 		 */
 		private void showGPSDisabledAlertToUser() {
-			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+					getActivity());
 			alertDialogBuilder
-					.setMessage(getActivity().getString(R.string.enable_gps_text))
+					.setMessage(
+							getActivity().getString(R.string.enable_gps_text))
 					.setCancelable(false)
-					.setPositiveButton(getActivity().getString(R.string.go_to_gps_settings),
+					.setPositiveButton(
+							getActivity()
+									.getString(R.string.go_to_gps_settings),
 							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int id) {
+								public void onClick(DialogInterface dialog,
+										int id) {
 									Intent callGPSSettingIntent = new Intent(
 											android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-									startActivityForResult(callGPSSettingIntent, 1);
+									startActivityForResult(
+											callGPSSettingIntent, 1);
 								}
 							});
-			alertDialogBuilder.setNegativeButton(getActivity().getString(R.string.cancel_action),
+			alertDialogBuilder.setNegativeButton(
+					getActivity().getString(R.string.cancel_action),
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							getMap().clear();
@@ -363,32 +410,51 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 * @param markers
 		 * @param selectedRouteId
 		 */
-		private void fillBusStopMarkers(ArrayList<MarkerData> markers, int selectedRouteId) {
-			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(getActivity());
+		private void fillBusStopMarkers(ArrayList<MarkerData> markers,
+				int selectedRouteId) {
+			SQLiteDatabaseHelper dbHelper = new SQLiteDatabaseHelper(
+					getActivity());
 			BusStopModel.LoadModel(dbHelper, selectedRouteId);
 			List<ClsBusStops> items = BusStopModel.Items;
-			Location currentLocation = getLastKnownLocation();
-			Location markerLocation = new Location("BusStopMarker");
-			for (ClsBusStops clsBusStop : items) {
-				markerLocation.setLatitude(clsBusStop.getLatitude());
-				markerLocation.setLongitude(clsBusStop.getLongitude());
-				float distance = currentLocation.distanceTo(markerLocation);
-				if (distance > 1000) {
-					markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
-							.getStopName(), getActivity().getString(R.string.distance_kilometers, distance / 1000)));
-				} else {
-					markers.add(new MarkerData(clsBusStop.getLongitude(), clsBusStop.getLatitude(), clsBusStop
-							.getStopName(), getActivity().getString(R.string.distance_meters, distance)));
+			Location currentLocation = null;
+			GPSTracker tracker = new GPSTracker(getActivity());
+			boolean isLocationAvailable = tracker.canGetLocation();
+			if (isLocationAvailable) {
+				currentLocation = new Location("CurrentLocation");
+				currentLocation.setLatitude(tracker.getLatitude());
+				currentLocation.setLongitude(tracker.getLongitude());
+			}
+			if (currentLocation != null) {
+				Location markerLocation = new Location("BusStopMarker");
+				for (ClsBusStops clsBusStop : items) {
+					markerLocation.setLatitude(clsBusStop.getLatitude());
+					markerLocation.setLongitude(clsBusStop.getLongitude());
+					float distance = currentLocation.distanceTo(markerLocation);
+					if (distance > 1000) {
+						markers.add(new MarkerData(clsBusStop.getLongitude(),
+								clsBusStop.getLatitude(), clsBusStop
+										.getStopName(), getActivity()
+										.getString(
+												R.string.distance_kilometers,
+												distance / 1000)));
+					} else {
+						markers.add(new MarkerData(clsBusStop.getLongitude(),
+								clsBusStop.getLatitude(), clsBusStop
+										.getStopName(), getActivity()
+										.getString(R.string.distance_meters,
+												distance)));
+					}
 				}
-
 			}
 		}
 
 		@Override
-		public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+		public void onCreateContextMenu(ContextMenu menu, View v,
+				ContextMenuInfo menuInfo) {
 			super.onCreateContextMenu(menu, v, menuInfo);
 			menu.setHeaderTitle(getSelectedMarker().getTitle());
-			menu.add(0, v.getId(), 0, getActivity().getString(R.string.take_me_to_this_stop));
+			menu.add(0, v.getId(), 0,
+					getActivity().getString(R.string.take_me_to_this_stop));
 		}
 
 		@Override
@@ -399,8 +465,10 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 
 		@Override
 		public boolean onContextItemSelected(MenuItem item) {
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="
-					+ getSelectedMarker().getPosition().latitude + "," + getSelectedMarker().getPosition().longitude));
+			Intent intent = new Intent(Intent.ACTION_VIEW,
+					Uri.parse("google.navigation:q="
+							+ getSelectedMarker().getPosition().latitude + ","
+							+ getSelectedMarker().getPosition().longitude));
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intent);
 			return true;
@@ -416,7 +484,8 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		 */
 		public SupportMapFragment getFm() {
 			if (fm == null) {
-				fm = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
+				fm = (SupportMapFragment) getActivity()
+						.getSupportFragmentManager().findFragmentById(R.id.map);
 			}
 			return fm;
 		}
@@ -493,8 +562,10 @@ public class TariffsActivity extends FragmentActivity implements ActionBar.OnNav
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_about, container, false);
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_about,
+					container, false);
 			return rootView;
 		}
 	}
