@@ -8,6 +8,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LevelListDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -281,10 +285,14 @@ public class TariffsActivity extends FragmentActivity implements
 
 			for (MarkerData d : markers) {
 				LatLng location = new LatLng(d.lat, d.lng);
+				Drawable busStopMark = getResources().getDrawable(R.drawable.img_busstop);
+				//busStopMark.setLevel(165324);
+				BitmapDrawable bd=(BitmapDrawable) busStopMark.getCurrent();
+				Bitmap b=bd.getBitmap();
+				Bitmap busStopDoubleSize=Bitmap.createScaledBitmap(b, b.getWidth()*4,b.getHeight()*4, false);
 				getMap().addMarker(
 						new MarkerOptions()
-								.icon(BitmapDescriptorFactory
-										.fromResource(R.drawable.img_busstop))
+								.icon(BitmapDescriptorFactory.fromBitmap(busStopDoubleSize))
 								.position(location).title(d.title)
 								.snippet(d.snippet));
 			}
